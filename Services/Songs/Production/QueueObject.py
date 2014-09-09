@@ -1,7 +1,7 @@
 from peewee import *
-import os
+import sys
 
-os.path.append("../../Database/")
+sys.path.append("../../Database/")
 from BaseModel import BaseModel
 
 from Song import Song

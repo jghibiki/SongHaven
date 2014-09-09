@@ -1,8 +1,8 @@
 import unittest
-import os
+import sys
 
-os.path.append("../Production/")
-os.path
+sys.path.append("../Production/")
+from QueueObject import QueueObjects
 
 #if nose is probing this then
 #we want it to run the tests
@@ -14,9 +14,8 @@ class TestTypes(unittest.TestCase):
     def setUp(self):
         ClassUnderTest = QueueObject(QueuePosition=0, SongId=0)
 
-
     def EnsureQueuePositionIsTypeIntegerField(self):
-        assert ClassUnderTest.QueuePosition is IntegerField
+        self.assertTrue(ClassUnderTest.QueuePosition is IntegerField)
 
     def EnsureSongIdIsTypeIntegerField(self):
-        assert ClassUnderTest.SongId is IntegerField
+        self.assertTrue(ClassUnderTest.SongId is IntegerField)
