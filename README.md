@@ -3,6 +3,12 @@ SongHaven
 
 An audio controller for playing music on a host machine and controlling via web clients
 
+CI Build:
+=========
+
+https://travis-ci.org/jghibiki/SongHaven.svg?branch=master
+
+
 Directory Structure:
 ====================
     .
