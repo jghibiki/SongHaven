@@ -1,7 +1,6 @@
-import MySQLDataBase
 from peewee import *
 
-db = MySQLDataBase("SongHaven")
+db = MySQLDatabase(database="SongHaven", user="SongHavenUsr", passwd="mary1234")
 
 class BaseModel(Model):
     class Meta:
