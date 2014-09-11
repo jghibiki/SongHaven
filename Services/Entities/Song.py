@@ -11,7 +11,7 @@ class Song(BaseModel):
     Album = CharField()
     NumberOfPlays = IntegerField()
     CreatedDate = DateTimeField()
-    UpdatedDate = DateTimeField()
+
 
     @staticmethod
     def NewSong( _title, _artist, _album):
@@ -22,7 +22,6 @@ class Song(BaseModel):
         song.Album = _album
         song.NumberOfPlays = 0
         song.CreatedDate = datetime.utcnow()
-        song.UpdatedDate = datetime.utcnow()
         return song
 
 
