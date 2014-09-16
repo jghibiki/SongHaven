@@ -1,14 +1,19 @@
 from peewee import *
+from datetime import datetime
 import sys, os
-
-sys.path.insert(0,os.path.abspath("../../Database/"))
-from BaseModel import BaseModel
-
 from Song import Song
+from BaseModel import BaseModel
 
 
 class QueueObject(BaseModel):
-    QueuePosition = IntegerField(PrimaryKeyField=True)
-    SongId = IntegerField()
+    id = IntegerField(primary_key=False)
+    SongId = CharField()
     CreatedDate = DateTimeField()
+
+    @staticmethod
+    def newInstance(_Song):
+        queueObject = QueueObject()
+        queueObject.SongId = Song.id
+        queueObject.CreatedDate = datetime.utcnow()
+        return queueObject
 

@@ -14,7 +14,7 @@ class Song(BaseModel):
 
 
     @staticmethod
-    def NewSong( _title, _artist, _album):
+    def newInstance( _title, _artist, _album):
         song = Song()
         song.id = str(uuid4())
         song.Title = _title
