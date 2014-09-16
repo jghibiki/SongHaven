@@ -19,6 +19,8 @@ Directory Structure:
     | |-index.html
     | |-assets/
     | |-js/
+    |-Documents/
+    | |-pse-presentation.pdf
     |-Services/
     | |-Users/
     | | |-Production/
