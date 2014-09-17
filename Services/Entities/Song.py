@@ -28,14 +28,3 @@ class Song(BaseModel):
 
 
 
-    def isPlayable(self):
-        elapsedTime = self.LastPlayedDate - datetime.utcnow()
-
-        if(elapsedTime >= timedelta(minutes=30)):
-            return True
-        else:
-            return False
-
-    def markPlayed(self):
-        self.LastPlayedDate = datetime.utcnow()
-
