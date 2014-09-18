@@ -1,0 +1,96 @@
+﻿Team :D Meeting Minutes
+Date:  09/03/2014
+
+
+Attendance:  
+Corey Arneson
+Eric Krenz
+Jordan Goetze
+Christy King
+
+
+Main Objective:  To discuss initial project ideas and work on Deliverable 1.
+
+
+Discussed:
+* Project design and requirements
+* Web Interface design
+* Server options
+* Web Platform- Python Flask
+* Object Relational Mapper (ORM)- PeeWee
+* Database options- MySQL
+* Playing audio- MPlayer
+* Repository options- Tortoise and Git
+
+
+Completed Tasks:
+* Assigned group roles and responsibilities 
+* Began work on Deliverable 1 documents and presentation
+* Designed a framework for the project
+* Decided on languages and tools to use
+Upcoming Tasks:
+* Come up with a project title
+* Develop a Gantt Chart
+* Determine risk management
+* Complete Deliverable 1
+* Introduction to Python for Corey and Christy
+
+
+-------------------------------------------------------
+
+Team :D Meeting Minutes
+Date:  09/04/2014
+
+
+Attendance:  
+Corey Arneson
+Eric Krenz
+Jordan Goetze
+Christy King
+
+
+Main Objective:  To discuss initial project ideas and work on Deliverable 1.
+
+
+Discussed:
+* Project design and requirements
+* Risk management
+* Formatting ppt
+* working on deliverable 1
+* came up with project title
+
+Completed Tasks:
+* Came up with project title
+
+Upcoming Tasks:
+* Develop a Gantt Chart
+* Complete Deliverable 1
+* Introduction to Python for Corey and Christy
+
+-------------------------------------------------------
+
+Team :D Meeting Minutes
+Date:  09/07/2014
+
+
+Attendance:  
+Eric Krenz
+Jordan Goetze
+
+
+Main Objective: Finish up delivable 1 and work on ppt presentation. 
+
+
+Discussed:
+* Project design and requirements
+* Formatting ppt
+* working on deliverable 1
+
+
+Completed Tasks:
+finish up deliverable1
+finish up gantt chart
+
+Upcoming Tasks:
+* Introduction to Python for Corey and Christy
+
