@@ -20,6 +20,7 @@ Directory Structure:
     | |-assets/
     | |-js/
     |-Documents/
+    | |-MeetingMinutes.txt
     | |-pse-presentation.pdf
     |-Services/
     | |-Users/
