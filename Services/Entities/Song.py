@@ -1,11 +1,11 @@
 from peewee import *
-from datetime import datetime, timedelta
+from datetime import datetime
 from BaseModel import BaseModel
 from uuid import uuid4
 
 
 class Song(BaseModel):
-    id = CharField(primary_key=False)
+    id = CharField(primary_key=True)
     Title = CharField()
     Artist = CharField()
     Album = CharField()
