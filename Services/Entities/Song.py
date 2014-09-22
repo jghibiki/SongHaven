@@ -6,24 +6,22 @@ from uuid import uuid4
 
 class Song(BaseModel):
     id = CharField(primary_key=True)
-    Title = CharField()
-    Artist = CharField()
-    Album = CharField()
-    NumberOfPlays = IntegerField()
-    CreatedDate = DateTimeField()
-    LastPlayedDate = DateTimeField()
+    title = CharField()
+    artist = CharField()
+    album = CharField()
+    numberOfPlays = IntegerField()
+    createdDate = DateTimeField(default=datetime.utcnow)
+    lastPlayedDate = DateTimeField(default=datetime.utcnow)
 
 
     @staticmethod
     def newInstance( _title, _artist, _album):
         song = Song()
         song.id = str(uuid4())
-        song.Title = _title
-        song.Artist = _artist
-        song.Album = _album
-        song.NumberOfPlays = 0
-        song.CreatedDate = datetime.utcnow()
-        song.LastPlayedDate = datetime.utcnow()
+        song.title = _title
+        song.artist = _artist
+        song.album = _album
+        song.numberOfPlays = 0
         return song
 
 

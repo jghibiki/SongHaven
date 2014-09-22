@@ -4,10 +4,10 @@ from BaseModel import BaseModel
 from uuid import uuid4
 
 class RecentPlay(BaseModel):
-    id = CharField(primary_key=False)
+    id = CharField(primary_key=True)
     userId = CharField()
     songId = CharField()
-    createdDate = DateTimeField()
+    createdDate = DateTimeField(default=datetime.utcnow)
 
 
 
@@ -18,7 +18,6 @@ class RecentPlay(BaseModel):
         play.id = str(uuid4())
         play.userId = _userid
         play.songId = _songid
-        play.createdDate = datetime.utcnow()
         return play
 
 

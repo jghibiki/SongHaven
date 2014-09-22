@@ -9,7 +9,7 @@ class User(BaseModel):
     firstName = CharField()
     lastName = CharField()
     email = CharField()
-    cretedDate = DateTimeField(default=datetime.utcnow)
+    createdDate = DateTimeField(default=datetime.utcnow)
     accountStrikes = IntegerField()
     dateBanned = DateTimeField(null=True, default=None)
     timesBanned = IntegerField()
@@ -26,7 +26,6 @@ class User(BaseModel):
         user.lastName = _lastName
         user.email = _email
         user.password = _password
-        user.createdDate = datetime.utcnow()
         user.dateBanned = None
         user.accountStrikes = 0
         user.dateBanned = None
