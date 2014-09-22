@@ -1,1 +1,1 @@
-__all__=["BaseModel", "QueueObject", "Request", "User", "Song"]
+__all__=["BaseModel", "QueueObject", "Request", "User", "Song", "UserClaim", "UserToken"]
