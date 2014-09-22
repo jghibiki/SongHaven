@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from BaseModel import BaseModel
 from uuid import uuid4
 
-class UserToken:
+class UserToken(BaseModel):
     id = CharField(primary_key=True)
     userId = CharField()
     createdDate = DateTimeField()

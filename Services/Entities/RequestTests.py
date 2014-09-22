@@ -9,8 +9,9 @@ from uuid import uuid4
 class TestTypes(unittest.TestCase):
 
     def setUp(self):
-        self.expected = "abcdefg"
-        self.ClassUnderTest = Request.Request.newInstance(self.expected)
+        self.expectedSong = "abcdefg"
+        self.expectedUser = "xyz"
+        self.ClassUnderTest = Request.Request.newInstance(self.expectedSong, self.expectedUser)
 
     def test_idIsNotNone(self):
         self.assertIsNotNone(self.ClassUnderTest.id)
@@ -19,7 +20,10 @@ class TestTypes(unittest.TestCase):
         self.assertIsNotNone(self.ClassUnderTest.songId)
 
     def test_songIdIsExpected(self):
-        self.assertTrue(self.ClassUnderTest.songId == self.expected)
+        self.assertEqual(self.ClassUnderTest.songId, self.expectedSong)
+
+    def test_userIdIsExpected(self):
+        self.assertEqual(self.ClassUnderTest.userId, self.expectedUser)
 
     def test_createdDateIsNotnone(self):
         self.assertIsNotNone(self.ClassUnderTest.createdDate)
