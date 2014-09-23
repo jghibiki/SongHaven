@@ -4,6 +4,9 @@ from BaseModel import BaseModel
 from uuid import uuid4
 
 class User(BaseModel):
+    """
+    A class encapsulating a user in the system.
+    """
     id = CharField(primary_key=True)
     username = CharField()
     firstName = CharField()
@@ -19,6 +22,9 @@ class User(BaseModel):
     #static methods
     @staticmethod
     def newInstance(_username, _firstName, _lastName, _email, _password):
+        """
+        Creates a new instance of a User.
+        """
         user = User()
         user.id = str(uuid4())
         user.username = _username

@@ -1,1 +1,1 @@
-__all__=["QueueManagementService", "SongManagementService", "UploadManagementService", "UserManagementService"]
+__all__=["QueueManagementService", "SongManagementService", "UploadManagementService", "UserManagementService", "Entities"]
