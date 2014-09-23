@@ -94,3 +94,30 @@ finish up gantt chart
 Upcoming Tasks:
 * Introduction to Python for Corey and Christy
 
+-------------------------------------------------------
+
+Team :D Meeting Minutes
+Date:  09/22/2014
+
+
+Attendance:  
+Eric Krenz
+Jordan Goetze
+Corey Arneston
+Christy King
+
+
+Main Objective: Work on Deliverable 2 and power point presentation
+
+
+Discussed:
+* Project design and requirements
+* Formatting ppt
+* working on deliverable 2
+
+
+Completed Tasks:
+
+Upcoming Tasks:
+- Continue working on deliverable 2
+
