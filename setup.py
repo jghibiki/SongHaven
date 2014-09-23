@@ -1,10 +1,11 @@
 from setuptools import setup
-import os
+from pip.req import parse_requirements
 
-with open("requirements.txt") as f:
-    required = f.read().splitlines()
+install_reqs = parse_requiremetns("requirements.txt")
+reqs = [str(ir.req) for ir in install_reqs]
+
 
 setup(name='SongHaven',
         version='0.0',
-        install_requires=required
+        install_requires=reqs
         )
