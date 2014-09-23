@@ -1,11 +1,7 @@
 from setuptools import setup
 from pip.req import parse_requirements
 
-install_reqs = parse_requirements("requirements.txt")
-reqs = [str(ir.req) for ir in install_reqs]
-
-
 setup(name='SongHaven',
         version='0.0',
-        install_requires=reqs
+        install_requires=["flask", "jinja2", "markupsafe", "pygments", "werkzeug", "argparse", "distribute", "docutils", "itsdangerous", "peewee", "wsgiref"]
         )
