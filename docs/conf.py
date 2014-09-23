@@ -1,3 +1,17 @@
+#mock out python libraries that we don't really care about when building documentation
+import sys
+from mock import Mock as MagicMock
+
+class Mock(MagicMock):
+    @classmethod
+    def __getattr__(cls,name):
+        return Mock()
+
+MockModules = ["peewee.CharField()"]
+sys.modules.update((mod_name, Mock()) for mod_name in MockModules)
+
+
+
 # -*- coding: utf-8 -*-
 #
 # Song Haven documentation build configuration file, created by
