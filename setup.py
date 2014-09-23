@@ -1,6 +1,10 @@
 from setuptools import setup
+import os
+
+with open("requirements.txt") as f:
+    required = f.read().splitlines()
 
 setup(name='SongHaven',
         version='0.0',
-        install_requires=['flask', 'Jinja2', 'MarkupSafe', 'Pygments', 'Werkzeug', 'argparse', 'distribute', 'itsdangerous', 'peewee', 'wsgiref']
+        install_requires=required
         )
