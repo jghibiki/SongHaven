@@ -1,6 +1,6 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(name='SongHaven',
         version='0.0',
-        packages=['flask', 'Jinja2', 'MarkupSafe', 'Pygments', 'Werkzueg', 'argparse', 'distribute', 'itsdangerous', 'peewee', 'wsgiref']
+        install_requires=['flask', 'Jinja2', 'MarkupSafe', 'Pygments', 'Werkzueg', 'argparse', 'distribute', 'itsdangerous', 'peewee', 'wsgiref']
         )
