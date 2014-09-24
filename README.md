@@ -16,37 +16,66 @@ Documentation Build:
 
 Directory Structure:
 ---------------------
-    .
-    |-README.md
-    |-AuthServer/
-    |-IdentityServer/
-    |-Web/
-    | |-index.html
-    | |-assets/
-    | |-js/
-    |-Documents/
-    | |-MeetingMinutes.txt
-    | |-pse-presentation.pdf
-    |-Services/
-    | |-Users/
-    | | |-Production/
-    | | | |-User.py
-    | | | |-UserManagementService.py
-    | | |-UnitTests/
-    | | | |-UserTests.py
-    | | | |-UserManagementServiceTests.py
-    | |-Songs/
-    | | |-Production/
-    | | | |-Song.py
-    | | | |-Request.py
-    | | | |-Queue.py
-    | | | |-UploadManagementService.py
-    | | | |-PlaylistManagementService.py
-    | | | |-SongManagementService.py
-    | | |-UnitTests/
-    | | | |-SongTests.py
-    | | | |-RequestTests.py
-    | | | |-QueueTests.py
-    | | | |-UploadMangementServiceTests.py
-    | | | |-PlaylistManagementServiceTests.py
-    | | | |-SongManagementServiceTests.py
+.
+├── deamon.py
+├── Documents
+│   ├── MeetingMinutes.txt
+│   └── pse-presentation.pdf
+├── README.md
+├── requirements.txt
+├── Services
+│   ├── AuthenticationService.py
+│   ├── Entities
+│   │   ├── BaseModel.py
+│   │   ├── BaseModel.pyc
+│   │   ├── CreateTables.py
+│   │   ├── DBTest.py
+│   │   ├── __init__.py
+│   │   ├── __init__.pyc
+│   │   ├── RecentPlay.py
+│   │   ├── RecentPlay.pyc
+│   │   ├── RecentPlayTest.py
+│   │   ├── Request.py
+│   │   ├── Request.pyc
+│   │   ├── RequestTests.py
+│   │   ├── RequestTests.pyc
+│   │   ├── Song.py
+│   │   ├── Song.pyc
+│   │   ├── SongTests.py
+│   │   ├── SongTests.pyc
+│   │   ├── UserClaim.py
+│   │   ├── UserClaim.pyc
+│   │   ├── UserClaimTests.py
+│   │   ├── UserClaimTests.pyc
+│   │   ├── User.py
+│   │   ├── User.pyc
+│   │   ├── UserTests.py
+│   │   ├── UserTests.pyc
+│   │   ├── UserToken.py
+│   │   ├── UserToken.pyc
+│   │   ├── UserTokenTests.py
+│   │   └── UserTokenTests.pyc
+│   ├── IdentificationService.py
+│   ├── __init__.py
+│   ├── __init__.pyc
+│   ├── QueueManagementService.py
+│   ├── QueueManagementService.pyc
+│   ├── QueueManagementServiceTests.py
+│   ├── QueueManagementServiceTests.pyc
+│   ├── SongManagementService.py
+│   ├── SongManagementService.pyc
+│   ├── SongManagementServiceTests.py
+│   ├── SongManagementServiceTests.pyc
+│   ├── UploadManagementService.py
+│   ├── UploadManagementService.pyc
+│   ├── UploadManagementServiceTests.py
+│   ├── UploadManagementServiceTests.pyc
+│   ├── UserManagementService.py
+│   ├── UserManagementService.pyc
+│   ├── UserManagementServiceTests.py
+│   └── UserManagementServiceTests.pyc
+├── setup.py
+├── update_dir_structure.sh
+└── Web
+
+4 directories, 56 files
