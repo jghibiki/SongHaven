@@ -7,3 +7,11 @@ install:
 
 script:
     - nosetests Services/**/*Tests.py
+
+deploy:
+    provider: releases
+    api-key: "ab66e40577c0e96bf8863bb60df8ae0c71648d2e"
+    skip_cleanup: true
+    on:
+        tags: true
+        all_branches: true
