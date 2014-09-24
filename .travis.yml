@@ -8,6 +8,9 @@ install:
 script:
     - nosetests Services/**/*Tests.py
 
+before_deploy:
+    - git tag
+
 deploy:
     provider: releases
     api-key: "ab66e40577c0e96bf8863bb60df8ae0c71648d2e"
