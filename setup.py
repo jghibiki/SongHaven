@@ -1,5 +1,4 @@
 from setuptools import setup
-from pip.req import parse_requirements
 
 setup(name='SongHaven',
         version='0.0',
