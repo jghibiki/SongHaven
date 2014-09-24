@@ -13,5 +13,5 @@ deploy:
     api-key: "ab66e40577c0e96bf8863bb60df8ae0c71648d2e"
     skip_cleanup: true
     on:
-        tags: true
+        tags: false
         all_branches: true
