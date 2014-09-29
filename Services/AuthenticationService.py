@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask.ext import restful
 from flask.ext.restful import reqparse, fields, marshal_with
 from requests import put,get
@@ -11,14 +11,13 @@ class requestToken(restful.Resource):
         self.reqparse.add_argument('username', type=str, location = 'json', required=True)
         self.reqparse.add_argument('password', type=str, location = 'json', required=True)
 
-
     def get(self, username, password):
         if(username == None):
             return {"error" : "None Parameter - username"}
         if password == None:
             return {"error" : "None Paremeter - password"}
 
-        result = createToken(username, password)
+        result = self.createToken(username, password)
 
         if result[0] == "success":
             return { "userToken" : result[1] }
@@ -61,3 +60,10 @@ class requestToken(restful.Resource):
             return ("error", "Username and password combination could not be verified.")
 
 
+class shutdownAuth(restful.Resource):
+    def get(self):
+        func = request.environ.get('werkzeug.server.shutdown')
+        if func is None:
+            raise RuntimeError('Not running with the Werkzeug Server')
+            func()
+        return "Shutting down..."
