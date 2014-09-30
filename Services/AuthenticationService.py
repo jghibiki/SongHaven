@@ -67,3 +67,4 @@ class shutdownAuth(restful.Resource):
             raise RuntimeError('Not running with the Werkzeug Server')
             func()
         return "Shutting down..."
+
