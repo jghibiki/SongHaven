@@ -53,3 +53,6 @@ c:\users\erick_000\documents\visual studio 2013\Projects\SongHaven\SongHaven\bin
 c:\users\erick_000\documents\visual studio 2013\Projects\SongHaven\SongHaven\obj\Debug\SongHaven.csprojResolveAssemblyReference.cache
 c:\users\erick_000\documents\visual studio 2013\Projects\SongHaven\SongHaven\obj\Debug\SongHaven.dll
 c:\users\erick_000\documents\visual studio 2013\Projects\SongHaven\SongHaven\obj\Debug\SongHaven.pdb
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\obj\Debug\SongHaven.csprojResolveAssemblyReference.cache
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\obj\Debug\SongHaven.dll
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\obj\Debug\SongHaven.pdb
