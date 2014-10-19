@@ -1,0 +1,72 @@
+﻿@model SongHaven.Song
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Song</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_album)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_album)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_artist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_artist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.int_number_of_plays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.int_number_of_plays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_last_played_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_last_played_date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

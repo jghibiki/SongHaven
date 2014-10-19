@@ -96,6 +96,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -163,13 +165,38 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SongsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request.cs">
+      <DependentUpon>SongHaven.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Song.cs">
+      <DependentUpon>SongHaven.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SongHaven.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SongHaven.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SongHaven.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SongHaven.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SongHaven.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SongHaven.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>SongHaven.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -232,6 +259,28 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Songs\Create.cshtml" />
+    <Content Include="Views\Songs\Delete.cshtml" />
+    <Content Include="Views\Songs\Details.cshtml" />
+    <Content Include="Views\Songs\Edit.cshtml" />
+    <Content Include="Views\Songs\Index.cshtml" />
+    <EntityDeploy Include="SongHaven.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SongHaven.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="SongHaven.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SongHaven.edmx</DependentUpon>
+      <LastGenOutput>SongHaven.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SongHaven.edmx.diagram">
+      <DependentUpon>SongHaven.edmx</DependentUpon>
+    </Content>
+    <Content Include="SongHaven.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SongHaven.edmx</DependentUpon>
+      <LastGenOutput>SongHaven.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -239,6 +288,9 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

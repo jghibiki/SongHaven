@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SongHavenModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="guid_id" />
+          </Key>
+          <Property Name="guid_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_song" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="fk_user" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="dt_created_date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Song">
+          <Key>
+            <PropertyRef Name="guid_id" />
+          </Key>
+          <Property Name="guid_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="nvc_title" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="nvc_album" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="nvc_artist" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="int_number_of_plays" Type="int" Nullable="false" />
+          <Property Name="dt_created_date" Type="datetime" Nullable="false" />
+          <Property Name="dt_last_played_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="guid_id" />
+          </Key>
+          <Property Name="guid_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="nvc_username" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="nvc_password" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="nvc_first_name" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="nvc_last_name" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="nvc_email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="dt_created_date" Type="datetime" Nullable="false" />
+          <Property Name="int_account_strikes" Type="int" Nullable="false" />
+          <Property Name="dt_date_banned" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__Request__fk_song__31EC6D26">
+          <End Role="Song" Type="Self.Song" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Song">
+              <PropertyRef Name="guid_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="fk_song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__fk_user__32E0915F">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="guid_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SongHavenModelStoreContainer">
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Song" EntityType="Self.Song" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Request__fk_song__31EC6D26" Association="Self.FK__Request__fk_song__31EC6D26">
+            <End Role="Song" EntitySet="Song" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__fk_user__32E0915F" Association="Self.FK__Request__fk_user__32E0915F">
+            <End Role="User" EntitySet="User" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SongHavenModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="guid_id" />
+          </Key>
+          <Property Name="guid_id" Type="Guid" Nullable="false" />
+          <Property Name="fk_song" Type="Guid" Nullable="false" />
+          <Property Name="fk_user" Type="Guid" Nullable="false" />
+          <Property Name="dt_created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Song" Relationship="Self.FK__Request__fk_song__31EC6D26" FromRole="Request" ToRole="Song" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Request__fk_user__32E0915F" FromRole="Request" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Song">
+          <Key>
+            <PropertyRef Name="guid_id" />
+          </Key>
+          <Property Name="guid_id" Type="Guid" Nullable="false" />
+          <Property Name="nvc_title" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nvc_album" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nvc_artist" Type="String" MaxLength="120" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="int_number_of_plays" Type="Int32" Nullable="false" />
+          <Property Name="dt_created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dt_last_played_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__fk_song__31EC6D26" FromRole="Song" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="guid_id" />
+          </Key>
+          <Property Name="guid_id" Type="Guid" Nullable="false" />
+          <Property Name="nvc_username" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nvc_password" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nvc_first_name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nvc_last_name" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nvc_email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dt_created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="int_account_strikes" Type="Int32" Nullable="false" />
+          <Property Name="dt_date_banned" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__fk_user__32E0915F" FromRole="User" ToRole="Request" />
+        </EntityType>
+        <Association Name="FK__Request__fk_song__31EC6D26">
+          <End Role="Song" Type="Self.Song" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Song">
+              <PropertyRef Name="guid_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="fk_song" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__fk_user__32E0915F">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="guid_id" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SongHavenEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Requests" EntityType="Self.Request" />
+          <EntitySet Name="Songs" EntityType="Self.Song" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Request__fk_song__31EC6D26" Association="Self.FK__Request__fk_song__31EC6D26">
+            <End Role="Song" EntitySet="Songs" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__fk_user__32E0915F" Association="Self.FK__Request__fk_user__32E0915F">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SongHavenModelStoreContainer" CdmEntityContainer="SongHavenEntities">
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="SongHavenModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="guid_id" ColumnName="guid_id" />
+                <ScalarProperty Name="fk_song" ColumnName="fk_song" />
+                <ScalarProperty Name="fk_user" ColumnName="fk_user" />
+                <ScalarProperty Name="dt_created_date" ColumnName="dt_created_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Songs">
+            <EntityTypeMapping TypeName="SongHavenModel.Song">
+              <MappingFragment StoreEntitySet="Song">
+                <ScalarProperty Name="guid_id" ColumnName="guid_id" />
+                <ScalarProperty Name="nvc_title" ColumnName="nvc_title" />
+                <ScalarProperty Name="nvc_album" ColumnName="nvc_album" />
+                <ScalarProperty Name="nvc_artist" ColumnName="nvc_artist" />
+                <ScalarProperty Name="int_number_of_plays" ColumnName="int_number_of_plays" />
+                <ScalarProperty Name="dt_created_date" ColumnName="dt_created_date" />
+                <ScalarProperty Name="dt_last_played_date" ColumnName="dt_last_played_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SongHavenModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="guid_id" ColumnName="guid_id" />
+                <ScalarProperty Name="nvc_username" ColumnName="nvc_username" />
+                <ScalarProperty Name="nvc_password" ColumnName="nvc_password" />
+                <ScalarProperty Name="nvc_first_name" ColumnName="nvc_first_name" />
+                <ScalarProperty Name="nvc_last_name" ColumnName="nvc_last_name" />
+                <ScalarProperty Name="nvc_email" ColumnName="nvc_email" />
+                <ScalarProperty Name="dt_created_date" ColumnName="dt_created_date" />
+                <ScalarProperty Name="int_account_strikes" ColumnName="int_account_strikes" />
+                <ScalarProperty Name="dt_date_banned" ColumnName="dt_date_banned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

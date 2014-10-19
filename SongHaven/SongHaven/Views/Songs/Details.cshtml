@@ -1,0 +1,66 @@
+﻿@model SongHaven.Song
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Song</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_album)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_album)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_artist)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_artist)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.int_number_of_plays)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.int_number_of_plays)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_last_played_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_last_played_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.guid_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

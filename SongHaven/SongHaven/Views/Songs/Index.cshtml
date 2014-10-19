@@ -1,0 +1,63 @@
+﻿@model IEnumerable<SongHaven.Song>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nvc_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvc_album)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvc_artist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.int_number_of_plays)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_created_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_last_played_date)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvc_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvc_album)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvc_artist)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.int_number_of_plays)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_created_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_last_played_date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.guid_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.guid_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.guid_id })
+        </td>
+    </tr>
+}
+
+</table>
