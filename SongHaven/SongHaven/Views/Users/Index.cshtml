@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SongHaven.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nvc_username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvc_password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvc_first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvc_last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nvc_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_created_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.int_account_strikes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dt_date_banned)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvc_username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvc_password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvc_first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvc_last_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nvc_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_created_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.int_account_strikes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dt_date_banned)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.guid_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.guid_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.guid_id })
+        </td>
+    </tr>
+}
+
+</table>

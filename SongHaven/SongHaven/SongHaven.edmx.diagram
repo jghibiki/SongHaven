@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1965b9fce3c2418c98c53c817cee6e1d" Name="Diagram1">
+      <Diagram DiagramId="0d9138bb066140f093c5f9ba668816a6" Name="Diagram1">
         <EntityTypeShape EntityType="SongHavenModel.Request" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SongHavenModel.Song" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SongHavenModel.User" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SongHavenModel.User" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
         <AssociationConnector Association="SongHavenModel.FK__Request__fk_song__31EC6D26" ManuallyRouted="false" />
-        <AssociationConnector Association="SongHavenModel.FK__Request__fk_user__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="SongHavenModel.FK_Request__fk_user" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SongHavenModel.Command" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

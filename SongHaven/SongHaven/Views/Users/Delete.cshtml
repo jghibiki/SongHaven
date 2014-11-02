@@ -1,0 +1,88 @@
+﻿@model SongHaven.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_first_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_first_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_last_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_last_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nvc_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nvc_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_created_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_created_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.int_account_strikes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.int_account_strikes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dt_date_banned)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dt_date_banned)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -28,5 +28,6 @@ namespace SongHaven
         public virtual DbSet<Request> Requests { get; set; }
         public virtual DbSet<Song> Songs { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Command> Commands { get; set; }
     }
 }

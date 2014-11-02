@@ -14,11 +14,6 @@ namespace SongHaven
     
     public partial class User
     {
-        public User()
-        {
-            this.Requests = new HashSet<Request>();
-        }
-    
         public System.Guid guid_id { get; set; }
         public string nvc_username { get; set; }
         public string nvc_password { get; set; }
@@ -28,7 +23,5 @@ namespace SongHaven
         public System.DateTime dt_created_date { get; set; }
         public int int_account_strikes { get; set; }
         public Nullable<System.DateTime> dt_date_banned { get; set; }
-    
-        public virtual ICollection<Request> Requests { get; set; }
     }
 }

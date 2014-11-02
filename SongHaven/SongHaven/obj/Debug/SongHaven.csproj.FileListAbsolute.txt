@@ -107,3 +107,8 @@ C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.WebP
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.WebPages.Deployment.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.WebPages.Razor.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.Optimization.xml
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\SongHaven.dll.config
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\CSCore.dll
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\CSCore.xml
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\NAudio.dll
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\NAudio.xml

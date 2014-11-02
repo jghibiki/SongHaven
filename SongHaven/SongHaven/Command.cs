@@ -12,15 +12,9 @@ namespace SongHaven
     using System;
     using System.Collections.Generic;
     
-    public partial class Song
+    public partial class Command
     {
-        public System.Guid guid_id { get; set; }
-        public string nvc_title { get; set; }
-        public string nvc_album { get; set; }
-        public string nvc_artist { get; set; }
-        public int int_number_of_plays { get; set; }
-        public System.DateTime dt_created_date { get; set; }
-        public Nullable<System.DateTime> dt_last_played_date { get; set; }
-        public string nvc_file_type { get; set; }
+        public int int_id { get; set; }
+        public int int_command { get; set; }
     }
 }
