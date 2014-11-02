@@ -349,7 +349,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54558</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/SongHaven2</IISUrl>
+          <IISUrl>http://localhost/SongHaven</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
