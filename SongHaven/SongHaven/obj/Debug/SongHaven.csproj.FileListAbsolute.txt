@@ -53,12 +53,11 @@ c:\users\erick_000\documents\visual studio 2013\Projects\SongHaven\SongHaven\bin
 c:\users\erick_000\documents\visual studio 2013\Projects\SongHaven\SongHaven\obj\Debug\SongHaven.csprojResolveAssemblyReference.cache
 c:\users\erick_000\documents\visual studio 2013\Projects\SongHaven\SongHaven\obj\Debug\SongHaven.dll
 c:\users\erick_000\documents\visual studio 2013\Projects\SongHaven\SongHaven\obj\Debug\SongHaven.pdb
-C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\obj\Debug\SongHaven.csprojResolveAssemblyReference.cache
-C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\obj\Debug\SongHaven.dll
-C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\obj\Debug\SongHaven.pdb
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\SongHaven.dll.config
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\SongHaven.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\SongHaven.pdb
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Antlr3.Runtime.dll
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\CSCore.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\EntityFramework.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\EntityFramework.SqlServer.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.AspNet.Identity.Core.dll
@@ -74,6 +73,7 @@ C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.Owin.
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.Owin.Security.OAuth.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.Owin.Security.Twitter.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\NAudio.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Newtonsoft.Json.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Owin.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.Helpers.dll
@@ -85,6 +85,7 @@ C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.WebP
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.WebPages.Razor.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\WebGrease.dll
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Antlr3.Runtime.pdb
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\CSCore.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\EntityFramework.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\EntityFramework.SqlServer.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.AspNet.Identity.Core.xml
@@ -99,6 +100,7 @@ C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.Owin.
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\NAudio.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\Newtonsoft.Json.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.Helpers.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.Mvc.xml
@@ -107,8 +109,6 @@ C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.WebP
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.WebPages.Deployment.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.WebPages.Razor.xml
 C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\System.Web.Optimization.xml
-C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\SongHaven.dll.config
-C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\CSCore.dll
-C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\CSCore.xml
-C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\NAudio.dll
-C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\bin\NAudio.xml
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\obj\Debug\SongHaven.dll
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\obj\Debug\SongHaven.pdb
+C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\obj\Debug\SongHaven.csprojResolveAssemblyReference.cache

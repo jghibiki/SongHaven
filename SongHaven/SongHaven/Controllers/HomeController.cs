@@ -13,6 +13,12 @@ namespace SongHaven.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
+        {
+            var a = form[0];
+            return View();
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

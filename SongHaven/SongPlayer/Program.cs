@@ -28,6 +28,10 @@ namespace SongPlayer
         private static IWavePlayer wavePlayer;
         private static TimeSpan totalPlayTime;
         private static Stopwatch stopWatch;
+        private static float volume = 0.75f;
+        private static bool isMuted = false;
+        private static AudioFileReader audioFileReader;
+        private static int waitConter = 0;
 
         static void Main(string[] args)
         {
@@ -61,24 +65,52 @@ namespace SongPlayer
                                     case Resources.RemoteCommand.PLAY_PAUSE:
                                         if (wavePlayer.PlaybackState == PlaybackState.Playing)
                                         {
-                                            Console.WriteLine("\nPausing...");
+                                            Console.WriteLine("Pausing...");
                                             stopWatch.Stop();
                                             wavePlayer.Pause();
-                                            Console.WriteLine("paused");
+                                            Console.WriteLine("Paused");
                                             WaitForContinue();
                                         }
                                         break;
                                     case Resources.RemoteCommand.NEXT_SONG:
-                                        throw new NotImplementedException();
-                                        break;
-                                    case Resources.RemoteCommand.VOLUME_UP:
-                                        throw new NotImplementedException();
+                                        skipSong = true;
+                                        Console.WriteLine("Skiping song...");
                                         break;
                                     case Resources.RemoteCommand.VOLUME_DOWN:
-                                        throw new NotImplementedException();
+                                        if (!isMuted)
+                                        {
+                                            volume -= 0.1f;
+                                            audioFileReader.Volume = volume;
+                                            Console.WriteLine("Volume decreased to " + volume.ToString());
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Volume is muted, volume not decreased.");
+                                        }
+                                        break;
+                                    case Resources.RemoteCommand.VOLUME_UP:
+                                        if (!isMuted)
+                                        {
+                                            volume += 0.1f;
+                                            audioFileReader.Volume = volume;
+                                            Console.WriteLine("Volume increased to " + volume.ToString());
+                                        }
+                                        else
+                                        {
+                                            Console.WriteLine("Volume is muted, volume not increased.");
+                                        }
                                         break;
                                     case Resources.RemoteCommand.VOLUME_MUTE:
-                                        throw new NotImplementedException();
+                                        if (!isMuted)
+                                        {
+                                            isMuted = true;
+                                            audioFileReader.Volume = 0f;
+                                        }
+                                        else
+                                        {
+                                            isMuted = false;
+                                            audioFileReader.Volume = volume;
+                                        }
                                         break;
                                     case Resources.RemoteCommand.RESTART:
                                         System.Diagnostics.Process.Start(Assembly.GetExecutingAssembly().Location);
@@ -89,19 +121,71 @@ namespace SongPlayer
                             }
 
                         }
-                        Console.WriteLine(" Finished!");
+                        Console.WriteLine("Song finished Finished!");
                         
 
 
                         db.Requests.Remove(nextRequest);
                         db.SaveChanges();
-
-
                     }
                     else
                     {
-                        Console.WriteLine("Waiting...");
-                        Thread.Sleep(5000);
+                        Resources.RemoteCommand command  = GetCommand();
+
+                        switch (command)
+                        {
+                            case Resources.RemoteCommand.DO_NOTHING:
+                                if (waitConter > 3)
+                                {
+                                    Console.WriteLine("Waiting..."); 
+                                }
+                                break;
+                            case Resources.RemoteCommand.VOLUME_DOWN:
+                                if (!isMuted)
+                                {
+                                    volume -= 0.1f;
+                                    audioFileReader.Volume = volume;
+                                    Console.WriteLine("Volume decreased to " + volume.ToString());
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Volume is muted, volume not decreased.");
+                                }
+                                break;
+                            case Resources.RemoteCommand.VOLUME_UP:
+                                if (!isMuted)
+                                {
+                                    volume += 0.1f;
+                                    audioFileReader.Volume = volume;
+                                    Console.WriteLine("Volume increased to " + volume.ToString());
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Volume is muted, volume not increased.");
+                                }
+                                break;
+                            case Resources.RemoteCommand.VOLUME_MUTE:
+                                if (!isMuted)
+                                {
+                                    isMuted = true;
+                                    audioFileReader.Volume = 0f;
+                                    Console.WriteLine("Volume Muted.");
+                                }
+                                else
+                                {
+                                    isMuted = false;
+                                    audioFileReader.Volume = volume;
+                                    Console.WriteLine("Volume Unmuted.");
+                                }
+                                break;
+                            case Resources.RemoteCommand.RESTART:
+                                System.Diagnostics.Process.Start(Assembly.GetExecutingAssembly().Location);
+                                Environment.Exit(0);
+                                break;
+
+                        }
+                        Thread.Sleep(100);
+                        
                     }
 
 
@@ -115,7 +199,8 @@ namespace SongPlayer
             string audioFile = string.Format(@"C:\ProgramData\SongHaven\music\{0}.{1}", nextRequest.Song.guid_id, nextRequest.Song.nvc_file_type);
 
             wavePlayer = new WaveOut();
-            var audioFileReader = new AudioFileReader(audioFile);
+            audioFileReader = new AudioFileReader(audioFile);
+            audioFileReader.Volume = !isMuted ? volume : 0f;
 
             wavePlayer.Init(audioFileReader);
             totalPlayTime = audioFileReader.TotalTime;
@@ -123,7 +208,7 @@ namespace SongPlayer
             stopWatch.Start();
             wavePlayer.Play();
             isPlaying = true;
-            Console.Write("Playing...");
+            Console.WriteLine("Playing...");
         }
 
         private static void WaitForContinue()
@@ -147,13 +232,40 @@ namespace SongPlayer
                         Console.WriteLine("Skiping song...");
                         break;
                     case Resources.RemoteCommand.VOLUME_DOWN:
-                        throw new NotImplementedException();
+                        if (!isMuted)
+                        {
+                            volume -= 0.1f;
+                            audioFileReader.Volume = volume;
+                            Console.WriteLine("Volume decreased to " + volume.ToString());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Volume is muted, volume not decreased.");
+                        }
                         break;
                     case Resources.RemoteCommand.VOLUME_UP:
-                        throw new NotImplementedException();
+                        if (!isMuted)
+                        {
+                            volume += 0.1f;
+                            audioFileReader.Volume = volume;
+                            Console.WriteLine("Volume increased to " + volume.ToString());
+                        }
+                        else
+                        {
+                            Console.WriteLine("Volume is muted, volume not increased.");
+                        }
                         break;
                     case Resources.RemoteCommand.VOLUME_MUTE:
-                        throw new NotImplementedException();
+                        if (!isMuted)
+                        {
+                            isMuted = true;
+                            audioFileReader.Volume = 0f;
+                        }
+                        else
+                        {
+                            isMuted = false;
+                            audioFileReader.Volume = volume;
+                        }
                         break;
                     case Resources.RemoteCommand.RESTART:
                         System.Diagnostics.Process.Start(Assembly.GetExecutingAssembly().Location);
