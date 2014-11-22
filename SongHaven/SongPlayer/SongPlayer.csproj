@@ -58,13 +58,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AudioFileStreamWrapper.cs" />
-    <Compile Include="Logging\ConsoleLogger.cs" />
-    <Compile Include="Logging\ILoggingMethod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.cs" />
-    <Compile Include="SongPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

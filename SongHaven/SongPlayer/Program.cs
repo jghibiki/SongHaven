@@ -200,8 +200,7 @@ namespace SongPlayer
 
             wavePlayer = new WaveOut();
             audioFileReader = new AudioFileReader(audioFile);
-            if (!isMuted) audioFileReader.Volume = volume;
-            else audioFileReader.Volume = 0f;
+            audioFileReader.Volume = !isMuted ? volume : 0f;
 
             wavePlayer.Init(audioFileReader);
             totalPlayTime = audioFileReader.TotalTime;
