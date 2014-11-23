@@ -1,32 +1,129 @@
-﻿@{
+﻿@model IEnumerable<SongHaven.Song>
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <h1>Song Haven</h1>
-    @*<p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>*@
-    <label>Select file: <input id="File1" type="file" accept="mp3" multiple="true"/></label>
-    <input type="submit" value="upload"/>
+    <h1>Now Playing: </h1>
+    <h2>@ViewBag.NowPlaying.ToString()</h2>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<h2>Messages</h2>
+<table class="table">
+    <tr>
+        <th>
+            Content
+        </th>
+        <th>
+            Date made
+        </th>
+        <th>
+            User
+        </th>
+    </tr>
+
+    @foreach (var item in ViewBag.Messages)
+    {
+        <tr>
+            <td>
+                item.content
+            </td>
+            <td>
+                item.date_created
+            </td>
+            <td>
+                item.User.nvc_username
+            </td>
+        </tr>
+    }
+</table>
+
+    <form>
+        <label>Select file: <input id="File1" type="file" accept="mp3" multiple="true" /></label>
+        <input type="submit" value="upload" />
+    </form>
+
+    <h2>Get more libraries</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Song
+            </th>
+            <th>
+                Date Requested
+            </th>
+            <th>
+                Requested By
+            </th>
+        </tr>
+
+        @foreach (var item in ViewBag.Requests)
+        {
+            <tr>
+                <td>
+                    @item.dt_created_date
+                </td>
+                <td>
+                    @item.Song.nvc_title)
+                </td>
+                <td>
+                    @item.User.nvc_username)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.guid_id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.guid_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.guid_id })
+                    </td>*@
+            </tr>
+        }
+    </table>
+
+    <h2>Songs</h2>
+    <table class="table">
+        <tr>
+            <th>
+                Song
+            </th>
+            <th>
+                Artist
+            </th>
+            <th>
+                Album
+            </th>
+            <th>
+                Plays
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nvc_title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nvc_artist)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nvc_album)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.int_number_of_plays)
+                </td>
+                <td>
+                    @Html.ActionLink("Request", "Request", new { id = item.guid_id })
+                </td>
+            </tr>
+        }
+    </table>
+    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+
+    @*<div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>Yblah</p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>*@
+
