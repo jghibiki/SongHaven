@@ -11,6 +11,8 @@
         <AssociationConnector Association="SongHavenModel.FK__Request__fk_song__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="SongHavenModel.FK_Request__fk_user" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SongHavenModel.Command" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SongHavenModel.Message" Width="1.5" PointX="3" PointY="6.625" />
+        <AssociationConnector Association="SongHavenModel.FK__Messages__fk_use__49C3F6B7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

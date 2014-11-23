@@ -12,6 +12,15 @@
           <Property Name="int_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="int_command" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="guid_id" />
+          </Key>
+          <Property Name="guid_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="content" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="date_created" Type="datetime" Nullable="false" />
+          <Property Name="fk_user" Type="uniqueidentifier" />
+        </EntityType>
         <EntityType Name="Requests">
           <Key>
             <PropertyRef Name="guid_id" />
@@ -48,6 +57,18 @@
           <Property Name="int_account_strikes" Type="int" Nullable="false" />
           <Property Name="dt_date_banned" Type="datetime" />
         </EntityType>
+        <Association Name="FK__Messages__fk_use__49C3F6B7">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Messages" Type="Self.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="guid_id" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Request__fk_song__31EC6D26">
           <End Role="Songs" Type="Self.Songs" Multiplicity="1" />
           <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
@@ -74,9 +95,14 @@
         </Association>
         <EntityContainer Name="SongHavenModelStoreContainer">
           <EntitySet Name="Commands" EntityType="Self.Commands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Messages" EntityType="Self.Messages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Requests" EntityType="Self.Requests" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Songs" EntityType="Self.Songs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Messages__fk_use__49C3F6B7" Association="Self.FK__Messages__fk_use__49C3F6B7">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
           <AssociationSet Name="FK__Request__fk_song__31EC6D26" Association="Self.FK__Request__fk_song__31EC6D26">
             <End Role="Songs" EntitySet="Songs" />
             <End Role="Requests" EntitySet="Requests" />
@@ -127,6 +153,7 @@
           <Property Name="dt_created_date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="int_account_strikes" Type="Int32" Nullable="false" />
           <Property Name="dt_date_banned" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Messages" Relationship="SongHavenModel.FK__Messages__fk_use__49C3F6B7" FromRole="User" ToRole="Message" />
         </EntityType>
         <Association Name="FK__Request__fk_song__31EC6D26">
           <End Role="Song" Type="Self.Song" Multiplicity="1" />
@@ -165,6 +192,11 @@
             <End Role="Request" EntitySet="Requests" />
           </AssociationSet>
           <EntitySet Name="Commands" EntityType="SongHavenModel.Command" />
+          <EntitySet Name="Messages" EntityType="SongHavenModel.Message" />
+          <AssociationSet Name="FK__Messages__fk_use__49C3F6B7" Association="SongHavenModel.FK__Messages__fk_use__49C3F6B7">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Command">
           <Key>
@@ -173,6 +205,28 @@
           <Property Name="int_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="int_command" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="guid_id" />
+          </Key>
+          <Property Name="guid_id" Type="Guid" Nullable="false" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="date_created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fk_user" Type="Guid" />
+          <NavigationProperty Name="User" Relationship="SongHavenModel.FK__Messages__fk_use__49C3F6B7" FromRole="Message" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Messages__fk_use__49C3F6B7">
+          <End Type="SongHavenModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="SongHavenModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="guid_id" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="fk_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -223,6 +277,16 @@
               <MappingFragment StoreEntitySet="Commands">
                 <ScalarProperty Name="int_command" ColumnName="int_command" />
                 <ScalarProperty Name="int_id" ColumnName="int_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="SongHavenModel.Message">
+              <MappingFragment StoreEntitySet="Messages">
+                <ScalarProperty Name="fk_user" ColumnName="fk_user" />
+                <ScalarProperty Name="date_created" ColumnName="date_created" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="guid_id" ColumnName="guid_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
