@@ -50,6 +50,16 @@ namespace SongPlayer
 
         #region Constructor
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioFileStreamWrapper"/> class.
+        /// </summary>
+        /// <param name="audioFile">The audio file.</param>
+        /// <param name="logger">The logger.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// audioFile
+        /// or
+        /// logger
+        /// </exception>
         public AudioFileStreamWrapper(string audioFile, ILoggingMethod logger)
         {
             if (string.IsNullOrEmpty(audioFile)) throw new ArgumentNullException("audioFile");
@@ -59,6 +69,17 @@ namespace SongPlayer
             Initialize(audioFile);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AudioFileStreamWrapper"/> class.
+        /// </summary>
+        /// <param name="audioFile">The audio file.</param>
+        /// <param name="logger">The logger.</param>
+        /// <param name="volume">The volume.</param>
+        /// <exception cref="System.ArgumentNullException">
+        /// audioFile
+        /// or
+        /// logger
+        /// </exception>
         public AudioFileStreamWrapper(string audioFile, ILoggingMethod logger, float volume)
         {
             if(string.IsNullOrEmpty(audioFile)) throw new ArgumentNullException("audioFile");
@@ -73,6 +94,9 @@ namespace SongPlayer
 
         #region Methods
 
+        /// <summary>
+        /// Plays this instance.
+        /// </summary>
         public void Play()
         {
             m_Logger.LogInfo("Playing song.");
@@ -114,6 +138,9 @@ namespace SongPlayer
             m_Logger.LogInfo("Playback state is now:" + PlaybackState.ToString());
         }
 
+        /// <summary>
+        /// Pauses this instance.
+        /// </summary>
         public void Pause()
         {
             m_Logger.LogInfo("Pausing song.");
@@ -134,6 +161,24 @@ namespace SongPlayer
                 }
             }
             m_Logger.LogInfo("Playback state is now:" + PlaybackState.ToString());
+        }
+
+        /// <summary>
+        /// Gets the volume.
+        /// </summary>
+        /// <returns></returns>
+        public float GetVolume()
+        {
+            return m_AudioFileReader.Volume;
+        }
+
+        /// <summary>
+        /// Sets the volume.
+        /// </summary>
+        /// <param name="volume">The volume.</param>
+        public void SetVolume(float volume)
+        {
+            m_AudioFileReader.Volume = volume;
         }
 
         #endregion

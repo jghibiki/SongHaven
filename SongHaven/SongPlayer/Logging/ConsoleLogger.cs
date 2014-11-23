@@ -24,7 +24,8 @@ namespace SongPlayer.Logging
 
         #region Methods
 
-        #region Implementation of ILoggingMethod
+
+        #region Constructor
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ConsoleLogger"/> class.
@@ -35,6 +36,7 @@ namespace SongPlayer.Logging
         {
             if (string.IsNullOrEmpty(loggerName)) throw new ArgumentNullException("Parameter loggerName cannot be null or empty.");
             m_LoggerName = loggerName;
+            m_LoggingLevel = 2;
         }
 
         /// <summary>
@@ -52,6 +54,10 @@ namespace SongPlayer.Logging
             m_LoggerName = loggerName;
             m_LoggingLevel = loggingLevel;
         }
+
+        #endregion
+
+        #region Implementation of ILoggingMethod
 
         /// <summary>
         /// Gets the type of the log.
@@ -105,7 +111,7 @@ namespace SongPlayer.Logging
         }
 
         public void LogDebug(string msg)
-        {
+       {
             if (m_LoggingLevel >= 0)
             {
                 Console.WriteLine(GetTimeStamp() + msg);

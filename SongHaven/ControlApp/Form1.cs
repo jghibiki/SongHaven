@@ -43,10 +43,6 @@ namespace ControlApp
             AddCommand(Resources.RemoteCommand.VOLUME_DOWN);
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            AddCommand(Resources.RemoteCommand.VOLUME_MUTE);
-        }
 
         private void button6_Click(object sender, EventArgs e)
         {
