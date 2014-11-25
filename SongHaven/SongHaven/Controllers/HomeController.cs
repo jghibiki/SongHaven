@@ -21,7 +21,6 @@ namespace SongHaven.Controllers
                                   select s.Song.nvc_title).FirstOrDefault().ToString();
             if (ViewBag.NowPlaying == null)
                 ViewBag.NowPlaying = "No Song Playing";
-
             ViewBag.Requests = (from r in db.Requests
                                 select r);
 

@@ -68,6 +68,18 @@ namespace SongHaven.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.Text )]
+        [Display(Name= "Username")]
+        public string username { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name="First Name")]
+        public string fname { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name="Last Name")]
+        public string lname { get; set; }
     }
 
     public class ResetPasswordViewModel
