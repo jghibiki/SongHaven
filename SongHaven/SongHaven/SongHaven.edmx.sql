@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/23/2014 15:23:57
+-- Date Created: 11/24/2014 18:11:47
 -- Generated from EDMX file: C:\Users\jghibiki\Source\Repos\songhaven\SongHaven\SongHaven\SongHaven.edmx
 -- --------------------------------------------------
 
@@ -23,14 +23,14 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_Request__fk_user]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Requests] DROP CONSTRAINT [FK_Request__fk_user];
 GO
+IF OBJECT_ID(N'[dbo].[FK__Messages__fk_use__49C3F6B7]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Messages] DROP CONSTRAINT [FK__Messages__fk_use__49C3F6B7];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[Command]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Command];
-GO
 IF OBJECT_ID(N'[dbo].[Requests]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Requests];
 GO
@@ -39,6 +39,12 @@ IF OBJECT_ID(N'[dbo].[Songs]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[Users]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Users];
+GO
+IF OBJECT_ID(N'[dbo].[Commands]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Commands];
+GO
+IF OBJECT_ID(N'[dbo].[Messages]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Messages];
 GO
 
 -- --------------------------------------------------
@@ -71,13 +77,12 @@ GO
 CREATE TABLE [dbo].[Users] (
     [guid_id] uniqueidentifier  NOT NULL,
     [nvc_username] nvarchar(60)  NOT NULL,
-    [nvc_password] nvarchar(60)  NOT NULL,
     [nvc_first_name] nvarchar(60)  NOT NULL,
     [nvc_last_name] nvarchar(60)  NOT NULL,
-    [nvc_email] nvarchar(200)  NOT NULL,
     [dt_created_date] datetime  NOT NULL,
     [int_account_strikes] int  NOT NULL,
-    [dt_date_banned] datetime  NULL
+    [dt_date_banned] datetime  NULL,
+    [nvc_mvc_id] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -85,6 +90,15 @@ GO
 CREATE TABLE [dbo].[Commands] (
     [int_id] int IDENTITY(1,1) NOT NULL,
     [int_command] int  NOT NULL
+);
+GO
+
+-- Creating table 'Messages'
+CREATE TABLE [dbo].[Messages] (
+    [guid_id] uniqueidentifier  NOT NULL,
+    [content] nvarchar(255)  NOT NULL,
+    [date_created] datetime  NOT NULL,
+    [fk_user] uniqueidentifier  NULL
 );
 GO
 
@@ -114,6 +128,12 @@ GO
 ALTER TABLE [dbo].[Commands]
 ADD CONSTRAINT [PK_Commands]
     PRIMARY KEY CLUSTERED ([int_id] ASC);
+GO
+
+-- Creating primary key on [guid_id] in table 'Messages'
+ALTER TABLE [dbo].[Messages]
+ADD CONSTRAINT [PK_Messages]
+    PRIMARY KEY CLUSTERED ([guid_id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -147,6 +167,21 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_Request__fk_user'
 CREATE INDEX [IX_FK_Request__fk_user]
 ON [dbo].[Requests]
+    ([fk_user]);
+GO
+
+-- Creating foreign key on [fk_user] in table 'Messages'
+ALTER TABLE [dbo].[Messages]
+ADD CONSTRAINT [FK__Messages__fk_use__49C3F6B7]
+    FOREIGN KEY ([fk_user])
+    REFERENCES [dbo].[Users]
+        ([guid_id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK__Messages__fk_use__49C3F6B7'
+CREATE INDEX [IX_FK__Messages__fk_use__49C3F6B7]
+ON [dbo].[Messages]
     ([fk_user]);
 GO
 

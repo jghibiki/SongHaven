@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -94,6 +96,32 @@ namespace SongHaven.Controllers
                 IdentityResult result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    SongHaven.User songhavenUser = new User()
+                    {
+                        guid_id = Guid.NewGuid(),
+                        nvc_username = model.username,
+                        dt_created_date = DateTime.UtcNow,
+                        dt_date_banned = null,
+                        int_account_strikes = 0,
+                        nvc_first_name = model.fname,
+                        nvc_last_name = model.lname,
+                        nvc_mvc_id = user.Id
+                    };
+
+                    SongHavenEntities db = new SongHavenEntities();
+                    try
+                    {
+                        db.Users.Add(songhavenUser);
+                        db.SaveChanges();
+                    }
+                    catch
+                    {
+                        IList<string> errors =  result.Errors.ToList();
+                        errors.Add("Failed to create new user.");
+                        IdentityResult secondaryResult = new IdentityResult(errors);
+                        AddErrors(secondaryResult);
+                    }
+                    
                     await SignInAsync(user, isPersistent: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
