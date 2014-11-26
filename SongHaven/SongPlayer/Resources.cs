@@ -15,8 +15,7 @@ namespace SongPlayer
             NEXT_SONG = 2,
             VOLUME_UP = 3,
             VOLUME_DOWN = 4,
-            VOLUME_MUTE = 5,
-            RESTART = 6
+            RESTART = 5
         }
     }
 }

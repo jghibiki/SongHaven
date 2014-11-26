@@ -28,18 +28,18 @@ namespace SongHaven.Tests.Controllers
             Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsNotNull(result);
         }
 
-        [Test]
-        public void About()
-        {
-            // Arrange
-            HomeController controller = new HomeController();
+        //[Test]
+        //public void About()
+        //{
+        //    // Arrange
+        //    HomeController controller = new HomeController();
 
-            // Act
-            ViewResult result = controller.About() as ViewResult;
+        //    // Act
+        //    ViewResult result = controller.About() as ViewResult;
 
-            // Assert
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Your application description page.", result.ViewBag.Message);
-        }
+        //    // Assert
+        //    Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual("Your application description page.", result.ViewBag.Message);
+        //}
 
         [Test]
         public void Contact()
