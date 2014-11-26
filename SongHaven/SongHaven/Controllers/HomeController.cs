@@ -16,10 +16,11 @@ namespace SongHaven.Controllers
 
         public ActionResult Index()
         {
-            
-            ViewBag.NowPlaying = (from s in db.Requests
-                                  select s.Song.nvc_title).FirstOrDefault().ToString();
-            if (ViewBag.NowPlaying == null)
+            string firstOrDefault = (from s in db.Requests
+                select s.Song.nvc_title).FirstOrDefault();
+            if (firstOrDefault != null)
+                ViewBag.NowPlaying = firstOrDefault.ToString();
+            else
                 ViewBag.NowPlaying = "No Song Playing";
 
             ViewBag.Requests = (from r in db.Requests

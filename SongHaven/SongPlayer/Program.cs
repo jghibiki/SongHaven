@@ -23,15 +23,6 @@ namespace SongPlayer
 {
     class Program
     {
-        private static bool isPlaying = false;
-        private static bool skipSong = false;
-        private static IWavePlayer wavePlayer;
-        private static TimeSpan totalPlayTime;
-        private static Stopwatch stopWatch;
-        private static float volume = 0.75f;
-        private static bool isMuted = false;
-        private static AudioFileReader audioFileReader;
-        private static int waitConter = 0;
 
         static void Main(string[] args)
         {
@@ -111,13 +102,12 @@ namespace SongPlayer
             {
                 guid_id = new Guid("9EA72CDD-9DF8-4874-8D1F-BDE787AC29F0"),
                 nvc_username = "test",
-                nvc_password = "123",
-                nvc_email = "test@test.com",
                 nvc_first_name = "test",
                 nvc_last_name = "tester",
                 int_account_strikes = 0,
                 dt_created_date = DateTime.UtcNow,
-                dt_date_banned = null
+                dt_date_banned = null,
+                nvc_mvc_id = "non needed"
             };
 
             Console.WriteLine("Adding test user...");
