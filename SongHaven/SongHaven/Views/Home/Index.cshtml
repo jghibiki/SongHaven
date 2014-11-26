@@ -9,13 +9,14 @@
 </div>
 
 <h2>Messages</h2>
+<form action="~/Home/Index" method="post">
 <table class="table">
     <tr>
         <th>
-            Content
+            Date made
         </th>
         <th>
-            Date made
+            Content
         </th>
         <th>
             User
@@ -26,24 +27,33 @@
     {
         <tr>
             <td>
-                item.content
+                @item.date_created
             </td>
             <td>
-                item.date_created
+                @item.content
             </td>
             <td>
-                item.User.nvc_username
+                @item.User.nvc_username
             </td>
         </tr>
     }
+    <tr>
+        <th>
+            <input type="text" id="newContent" />
+        </th>
+        <th>
+            <input type="submit" />
+        </th>
+    </tr>
 </table>
-
-    <form>
-        <label>Select file: <input id="File1" type="file" accept="mp3" multiple="true" /></label>
-        <input type="submit" value="upload" />
+</form>
+    <form action="~/Home/Index" method="post">
+    <label>Select file: <input id="File1" type="file" accept="mp3" multiple="true" /></label>
+    <input type="submit" value="upload" />
     </form>
 
-    <h2>Get more libraries</h2>
+    <h2>Request Queue</h2>
+
     <table class="table">
         <tr>
             <th>
@@ -64,19 +74,16 @@
                     @item.dt_created_date
                 </td>
                 <td>
-                    @item.Song.nvc_title)
+                    @item.Song.nvc_title
                 </td>
                 <td>
-                    @item.User.nvc_username)
+                    @item.User.nvc_username
                 </td>
-                @*<td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.guid_id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.guid_id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.guid_id })
-                    </td>*@
             </tr>
         }
+
     </table>
+
 
     <h2>Songs</h2>
     <table class="table">
@@ -118,7 +125,6 @@
             </tr>
         }
     </table>
-    <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
 
 
     @*<div class="col-md-4">
