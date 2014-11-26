@@ -56,10 +56,11 @@
         </tr>
     </table>
 }
-    <form action="~/Home/Index" method="post">
+@using (Html.BeginForm("newSong","Home", FormMethod.Post))
+{
     <label>Select file: <input id="File1" type="file" accept="mp3" multiple="true" /></label>
     <input type="submit" value="upload" />
-    </form>
+}
 
     <h2>Request Queue</h2>
 

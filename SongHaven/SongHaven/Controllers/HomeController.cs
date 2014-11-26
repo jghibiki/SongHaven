@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SongHaven;
+using Microsoft.AspNet.Identity;
 
 namespace SongHaven.Controllers
 {
@@ -34,41 +35,47 @@ namespace SongHaven.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(FormCollection form, string newContent)
-        {
-            var a = form["newContent"];
-            return View();
-        }
-        [HttpPost]
         public ActionResult newContent(FormCollection form, string newContent)
         {
+            var currentUserID = User.Identity.GetUserId();
+
+            var userGuid = (from u in db.Users
+                            where u.nvc_mvc_id == currentUserID
+                            select u.guid_id).FirstOrDefault();
+
             Message newMessage = new Message
             {
                 date_created = DateTime.Now,
                 content = newContent,
-                fk_user = Guid.Parse("B0084E4D-A166-43F6-8B1B-65387C38F5D7"),
+                fk_user = userGuid,
                 guid_id = Guid.NewGuid(),
             };
 
             db.Messages.Add(newMessage);
 
             db.SaveChanges();
-            return View();
+            return RedirectToAction("Index");
         }
-        public ActionResult Request(System.Guid id)
+        [HttpPost]
+        public ActionResult newSong(FormCollection form, object File1)
         {
-
-            var song = (from s in db.Songs
-                        where s.guid_id == id
-                        select s).FirstOrDefault();
-
-            Request newSong = new Request();
-            newSong.fk_song = song.guid_id;
-
-            db.Requests.Add(newSong);
-
-            return View();
+            int i = 1;
+            return RedirectToAction("Index");
         }
+        //public ActionResult Request(System.Guid id)
+        //{
+
+        //    var song = (from s in db.Songs
+        //                where s.guid_id == id
+        //                select s).FirstOrDefault();
+
+        //    Request newSong = new Request();
+        //    newSong.fk_song = song.guid_id;
+
+        //    db.Requests.Add(newSong);
+
+        //    return View();
+        //}
         public ActionResult Request(Guid? id)
         {
             if (id == null)
@@ -81,6 +88,12 @@ namespace SongHaven.Controllers
                 return HttpNotFound();
             }
 
+            var currentUserID = User.Identity.GetUserId();
+
+            var userGuid = (from u in db.Users
+                            where u.nvc_mvc_id == currentUserID
+                            select u.guid_id).FirstOrDefault();
+
             if ((from r in db.Requests
                  where r.fk_song == (Guid)id
                  select r).FirstOrDefault() != null)
@@ -90,7 +103,7 @@ namespace SongHaven.Controllers
                     guid_id = Guid.NewGuid(),
                     dt_created_date = DateTime.Now,
                     fk_song = (Guid)id,
-                    fk_user = Guid.Parse("B0084E4D-A166-43F6-8B1B-65387C38F5D7")
+                    fk_user = userGuid
                 };
                 db.Requests.Add(newRequest);
 
