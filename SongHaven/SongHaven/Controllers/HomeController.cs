@@ -39,6 +39,22 @@ namespace SongHaven.Controllers
             var a = form["newContent"];
             return View();
         }
+        [HttpPost]
+        public ActionResult newContent(FormCollection form, string newContent)
+        {
+            Message newMessage = new Message
+            {
+                date_created = DateTime.Now,
+                content = newContent,
+                fk_user = Guid.Parse("B0084E4D-A166-43F6-8B1B-65387C38F5D7"),
+                guid_id = Guid.NewGuid(),
+            };
+
+            db.Messages.Add(newMessage);
+
+            db.SaveChanges();
+            return View();
+        }
         public ActionResult Request(System.Guid id)
         {
 

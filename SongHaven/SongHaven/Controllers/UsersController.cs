@@ -46,7 +46,7 @@ namespace SongHaven.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guid_id,nvc_username,nvc_password,nvc_first_name,nvc_last_name,nvc_email,dt_created_date,int_account_strikes,dt_date_banned")] User user)
+        public ActionResult Create([Bind(Include = "guid_id,nvc_username,nvc_first_name,nvc_last_name,dt_created_date,int_account_strikes,dt_date_banned,nvc_mvc_id")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace SongHaven.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guid_id,nvc_username,nvc_password,nvc_first_name,nvc_last_name,nvc_email,dt_created_date,int_account_strikes,dt_date_banned")] User user)
+        public ActionResult Edit([Bind(Include = "guid_id,nvc_username,nvc_first_name,nvc_last_name,dt_created_date,int_account_strikes,dt_date_banned,nvc_mvc_id")] User user)
         {
             if (ModelState.IsValid)
             {

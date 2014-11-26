@@ -9,44 +9,53 @@
 </div>
 
 <h2>Messages</h2>
-<form action="~/Home/Index" method="post">
-<table class="table">
-    <tr>
-        <th>
-            Date made
-        </th>
-        <th>
-            Content
-        </th>
-        <th>
-            User
-        </th>
-    </tr>
-
-    @foreach (var item in ViewBag.Messages)
-    {
+@using (Html.BeginForm("newContent","Home", FormMethod.Post))
+{ 
+    <table class="table">
         <tr>
-            <td>
-                @item.date_created
-            </td>
-            <td>
-                @item.content
-            </td>
-            <td>
-                @item.User.nvc_username
-            </td>
+            <th>
+                Date made
+            </th>
+            <th>
+                Content
+            </th>
+            <th>
+                User
+            </th>
         </tr>
-    }
-    <tr>
-        <th>
-            <input type="text" id="newContent" />
-        </th>
-        <th>
-            <input type="submit" />
-        </th>
-    </tr>
-</table>
-</form>
+
+        @foreach (var item in ViewBag.Messages)
+        {
+            <tr>
+                <td>
+                    @item.date_created
+                </td>
+                <td>
+                    @item.content
+                </td>
+                <td>
+                    @item.User.nvc_username
+                </td>
+            </tr>
+        }
+        <tr>
+            <th>
+                New Message:
+            </th>
+            <th>
+                
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <input type="text" id="newContent" name="newContent" />
+            </th>
+            <th>
+                <input type="submit" value="Post Message"/>
+            </th>
+        </tr>
+    </table>
+}
     <form action="~/Home/Index" method="post">
     <label>Select file: <input id="File1" type="file" accept="mp3" multiple="true" /></label>
     <input type="submit" value="upload" />
