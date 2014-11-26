@@ -10,110 +10,113 @@ using SongHaven;
 
 namespace SongHaven.Controllers
 {
-    public class SongsController : Controller
+    public class MessagesController : Controller
     {
         private SongHavenEntities db = new SongHavenEntities();
 
-        // GET: Songs
+        // GET: Messages
         public ActionResult Index()
         {
-            return View(db.Songs.ToList());
+            var messages = db.Messages.Include(m => m.User);
+            return View(messages.ToList());
         }
 
-        // GET: Songs/Details/5
+        // GET: Messages/Details/5
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Song song = db.Songs.Find(id);
-            if (song == null)
+            Message message = db.Messages.Find(id);
+            if (message == null)
             {
                 return HttpNotFound();
             }
-
-
-            return View(song);
+            return View(message);
         }
 
-        // GET: Songs/Create
+        // GET: Messages/Create
         public ActionResult Create()
         {
+            ViewBag.fk_user = new SelectList(db.Users, "guid_id", "nvc_username");
             return View();
         }
 
-        // POST: Songs/Create
+        // POST: Messages/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "guid_id,nvc_title,nvc_album,nvc_artist,int_number_of_plays,dt_created_date,dt_last_played_date,nvc_file_type")] Song song)
+        public ActionResult Create([Bind(Include = "guid_id,content,date_created,fk_user")] Message message)
         {
             if (ModelState.IsValid)
             {
-                song.guid_id = Guid.NewGuid();
-                db.Songs.Add(song);
+                message.guid_id = Guid.NewGuid();
+                db.Messages.Add(message);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(song);
+            ViewBag.fk_user = new SelectList(db.Users, "guid_id", "nvc_username", message.fk_user);
+            return View(message);
         }
 
-        // GET: Songs/Edit/5
+        // GET: Messages/Edit/5
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Song song = db.Songs.Find(id);
-            if (song == null)
+            Message message = db.Messages.Find(id);
+            if (message == null)
             {
                 return HttpNotFound();
             }
-            return View(song);
+            ViewBag.fk_user = new SelectList(db.Users, "guid_id", "nvc_username", message.fk_user);
+            return View(message);
         }
 
-        // POST: Songs/Edit/5
+        // POST: Messages/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "guid_id,nvc_title,nvc_album,nvc_artist,int_number_of_plays,dt_created_date,dt_last_played_date,nvc_file_type")] Song song)
+        public ActionResult Edit([Bind(Include = "guid_id,content,date_created,fk_user")] Message message)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(song).State = EntityState.Modified;
+                db.Entry(message).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(song);
+            ViewBag.fk_user = new SelectList(db.Users, "guid_id", "nvc_username", message.fk_user);
+            return View(message);
         }
 
-        // GET: Songs/Delete/5
+        // GET: Messages/Delete/5
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Song song = db.Songs.Find(id);
-            if (song == null)
+            Message message = db.Messages.Find(id);
+            if (message == null)
             {
                 return HttpNotFound();
             }
-            return View(song);
+            return View(message);
         }
 
-        // POST: Songs/Delete/5
+        // POST: Messages/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-            Song song = db.Songs.Find(id);
-            db.Songs.Remove(song);
+            Message message = db.Messages.Find(id);
+            db.Messages.Remove(message);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
