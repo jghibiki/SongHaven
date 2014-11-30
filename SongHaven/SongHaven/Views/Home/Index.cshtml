@@ -38,6 +38,7 @@
                 </td>
             </tr>
         }
+
         @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
         {
             <tr>
@@ -59,14 +60,8 @@
         }
     </table>
 }
-@if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
-{
-    using (Html.BeginForm("newSong", "Home", FormMethod.Post))
-     {
-         <label>Select file: <input id="File1" type="file" accept="mp3" multiple="true" /></label>
-         <input type="submit" value="upload" />
-     }
-}
+
+
     <h2>Request Queue</h2>
 
     <table class="table">
@@ -100,7 +95,11 @@
     </table>
 
 
-    <h2>Songs</h2>
+    <h2>Songs</h2> 
+    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
+    {
+         @Html.ActionLink("Upload a song", "Index", "Song")
+    }
     <table class="table">
         <tr>
             <th>
