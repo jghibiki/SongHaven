@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -55,6 +57,61 @@ namespace SongHaven.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(FormCollection form, string usernameOrEmail, string password, string returnUrl, string rememberMe)
+        {
+            
+            string email = usernameOrEmail;
+
+            
+
+            LoginViewModel logInModel = new LoginViewModel();
+
+            Regex reg = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            if (!reg.Match(usernameOrEmail).Success)
+            {
+                //we know that a user is trying to use an email address
+                SongHavenEntities db = new SongHavenEntities();
+                User user = db.Users.FirstOrDefault(x => x.nvc_username == usernameOrEmail);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Invalid username or password.");
+                    return View();
+                }
+                email = user.nvc_email;
+
+            }
+            //authenticate using mvc setup
+            var mvc_user = await UserManager.FindAsync(email, password);
+            if (mvc_user != null)
+            {
+                if (rememberMe == null)
+                {
+                    await SignInAsync(mvc_user, false);
+                    return RedirectToLocal(returnUrl);
+                }
+                else
+                {
+                    await SignInAsync(mvc_user, true);
+                    return RedirectToLocal(returnUrl);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid username or password.");
+            }
+
+
+            //If we got this far there was an error and we should reshow page with error messages
+            return View();
+        }
+
+
+        /*
+        //
+        // POST: /Account/Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
@@ -74,6 +131,7 @@ namespace SongHaven.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+        */
 
         //
         // GET: /Account/Register
@@ -115,7 +173,9 @@ namespace SongHaven.Controllers
                             int_account_strikes = 0,
                             nvc_first_name = model.fname,
                             nvc_last_name = model.lname,
-                            nvc_mvc_id = user.Id
+                            nvc_mvc_id = user.Id,
+                            nvc_email = user.Email,
+                            nvc_role = "user"
                         };
 
                         db.Users.Add(songhavenUser);

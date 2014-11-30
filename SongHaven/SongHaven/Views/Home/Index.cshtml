@@ -38,30 +38,35 @@
                 </td>
             </tr>
         }
-        <tr>
-            <th>
-                New Message:
-            </th>
-            <th>
+        @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
+        {
+            <tr>
+                <th>
+                    New Message:
+                </th>
+                <th>
                 
-            </th>
-        </tr>
-        <tr>
-            <th>
-                <input type="text" id="newContent" name="newContent" />
-            </th>
-            <th>
-                <input type="submit" value="Post Message"/>
-            </th>
-        </tr>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" id="newContent" name="newContent" />
+                </th>
+                <th>
+                    <input type="submit" value="Post Message"/>
+                </th>
+            </tr>
+        }
     </table>
 }
-@using (Html.BeginForm("newSong","Home", FormMethod.Post))
+@if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
 {
-    <label>Select file: <input id="File1" type="file" accept="mp3" multiple="true" /></label>
-    <input type="submit" value="upload" />
+    using (Html.BeginForm("newSong", "Home", FormMethod.Post))
+     {
+         <label>Select file: <input id="File1" type="file" accept="mp3" multiple="true" /></label>
+         <input type="submit" value="upload" />
+     }
 }
-
     <h2>Request Queue</h2>
 
     <table class="table">
@@ -129,9 +134,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.int_number_of_plays)
                 </td>
-                <td>
-                    @Html.ActionLink("Request", "Request", new { id = item.guid_id })
-                </td>
+               @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
+               {
+                    <td>
+                    @Html.ActionLink("Request", "Request", new {id = item.guid_id})
+                    </td>
+               }
             </tr>
         }
     </table>
