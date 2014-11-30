@@ -56,26 +56,7 @@ namespace SongHaven.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        [HttpPost]
-        public ActionResult newSong(FormCollection form, object File1)
-        {
-            int i = 1;
-            return RedirectToAction("Index");
-        }
-        //public ActionResult Request(System.Guid id)
-        //{
 
-        //    var song = (from s in db.Songs
-        //                where s.guid_id == id
-        //                select s).FirstOrDefault();
-
-        //    Request newSong = new Request();
-        //    newSong.fk_song = song.guid_id;
-
-        //    db.Requests.Add(newSong);
-
-        //    return View();
-        //}
         public ActionResult Request(Guid? id)
         {
             if (id == null)
