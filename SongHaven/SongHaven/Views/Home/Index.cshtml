@@ -38,21 +38,29 @@
                 </td>
             </tr>
         }
-        <tr>
-            <th>
-                New Message:
-            </th>
-            <th>
-                <input type="text" id="newContent" name="newContent" />
-            </th>
-            <th>
-                <input type="submit" value="Post Message"/>
-            </th>
-        </tr>
+
+        @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
+        {
+            <tr>
+                <th>
+                    New Message:
+                </th>
+                <th>
+                
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" id="newContent" name="newContent" />
+                </th>
+                <th>
+                    <input type="submit" value="Post Message"/>
+                </th>
+            </tr>
+        }
     </table>
 }
 
-    @Html.ActionLink("Add New Song","Song", "Index");
 
     <h2>Request Queue</h2>
 
@@ -87,7 +95,11 @@
     </table>
 
 
-    <h2>Songs</h2>
+    <h2>Songs</h2> 
+    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
+    {
+         @Html.ActionLink("Upload a song", "Index", "Song")
+    }
     <table class="table">
         <tr>
             <th>
@@ -121,9 +133,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.int_number_of_plays)
                 </td>
-                <td>
-                    @Html.ActionLink("Request", "Request", new { id = item.guid_id })
-                </td>
+               @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
+               {
+                    <td>
+                    @Html.ActionLink("Request", "Request", new {id = item.guid_id})
+                    </td>
+               }
             </tr>
         }
     </table>

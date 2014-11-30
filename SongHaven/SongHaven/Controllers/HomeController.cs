@@ -48,7 +48,6 @@ namespace SongHaven.Controllers
                 date_created = DateTime.Now,
                 content = newContent,
                 fk_user = userGuid,
-                guid_id = Guid.NewGuid(),
             };
 
             db.Messages.Add(newMessage);

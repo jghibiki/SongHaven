@@ -27,6 +27,8 @@ namespace SongHaven
         public int int_account_strikes { get; set; }
         public Nullable<System.DateTime> dt_date_banned { get; set; }
         public string nvc_mvc_id { get; set; }
+        public string nvc_email { get; set; }
+        public string nvc_role { get; set; }
     
         public virtual ICollection<Message> Messages { get; set; }
     }
