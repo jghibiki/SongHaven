@@ -7,7 +7,20 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @using (SongHavenEntities db = new SongHavenEntities())
+            {
+                var users = from u in db.Users select u;
+                string userid = User.Identity.GetUserId();
+                User loggedInUser = users.FirstOrDefault(x => x.nvc_mvc_id == userid);
+                if (loggedInUser != null)
+                {
+                    @Html.ActionLink("Hello " + loggedInUser.nvc_username + "!", "Manage", "Account", routeValues: null, htmlAttributes: new {title = "Manage"})
+                }
+                else
+                {
+                    @Html.ActionLink("Hello " + User.Identity.GetUserId() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new {title = "Manage"})
+                }
+            } 
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>
