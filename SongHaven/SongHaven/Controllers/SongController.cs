@@ -53,7 +53,31 @@ namespace SongHaven.Controllers
                 }
                 
             }
-            return RedirectToAction("Home","Index");
+            return RedirectToAction("Index","Home");
+        }
+
+        [HttpPost]
+        public ActionResult SearchResults(string searchString, string searchMode)
+        {
+            var songs = from m in db.Songs select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                if (searchMode == "title")
+                {
+                    songs = songs.Where(s => s.nvc_title.Contains(searchString));
+                }
+                else if (searchMode == "album")
+                {
+                    songs = songs.Where(s => s.nvc_album.Contains(searchString));
+                }
+                else if (searchMode == "artist")
+                {
+                    songs = songs.Where(s => s.nvc_artist.Contains(searchString));
+                }
+            }
+
+            return View(songs.ToList());
         }
     }
 

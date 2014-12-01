@@ -371,6 +371,7 @@
     <Content Include="Views\Shared\_MvcFileUploaderLayout.cshtml" />
     <Content Include="Views\Shared\_MvcFileUpload.cshtml" />
     <Content Include="Views\MvcUploaderTest\Demo.cshtml" />
+    <Content Include="Views\Song\SearchResults.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

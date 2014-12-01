@@ -21,6 +21,30 @@ namespace SongHaven.Controllers
             return View(db.Songs.ToList());
         }
 
+        [HttpPost]
+        public ActionResult Index(string searchMode, string searchString)
+        {
+            var songs = from m in db.Songs select m;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                if (searchMode == "title")
+                {
+                    songs = songs.Where(s => s.nvc_title.Contains(searchString));
+                }
+                else if (searchMode == "album")
+                {
+                    songs = songs.Where(s => s.nvc_album.Contains(searchString));
+                }
+                else if (searchMode == "artist")
+                {
+                    songs = songs.Where(s => s.nvc_artist.Contains(searchString));
+                }
+            }
+
+            return View(songs.ToList());
+        }
+
         // GET: Songs/Details/5
         [Authorize(Users = AuthorizedUsers.Users)]
         public ActionResult Details(Guid? id)
@@ -125,6 +149,7 @@ namespace SongHaven.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
 
         protected override void Dispose(bool disposing)
         {
