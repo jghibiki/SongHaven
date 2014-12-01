@@ -15,12 +15,14 @@ namespace SongHaven.Controllers
         private SongHavenEntities db = new SongHavenEntities();
 
         // GET: Songs
+        [Authorize(Users = AuthorizedUsers.Users)]
         public ActionResult Index()
         {
             return View(db.Songs.ToList());
         }
 
         // GET: Songs/Details/5
+        [Authorize(Users = AuthorizedUsers.Users)]
         public ActionResult Details(Guid? id)
         {
             if (id == null)
@@ -38,6 +40,7 @@ namespace SongHaven.Controllers
         }
 
         // GET: Songs/Create
+        [Authorize(Users = AuthorizedUsers.Users)]
         public ActionResult Create()
         {
             return View();
@@ -48,6 +51,7 @@ namespace SongHaven.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Users = AuthorizedUsers.Users)]
         public ActionResult Create([Bind(Include = "guid_id,nvc_title,nvc_album,nvc_artist,int_number_of_plays,dt_created_date,dt_last_played_date,nvc_file_type")] Song song)
         {
             if (ModelState.IsValid)
@@ -62,6 +66,7 @@ namespace SongHaven.Controllers
         }
 
         // GET: Songs/Edit/5
+        [Authorize(Users = AuthorizedUsers.Users)]
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
@@ -81,6 +86,7 @@ namespace SongHaven.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Users = AuthorizedUsers.Users)]
         public ActionResult Edit([Bind(Include = "guid_id,nvc_title,nvc_album,nvc_artist,int_number_of_plays,dt_created_date,dt_last_played_date,nvc_file_type")] Song song)
         {
             if (ModelState.IsValid)
@@ -93,6 +99,7 @@ namespace SongHaven.Controllers
         }
 
         // GET: Songs/Delete/5
+        [Authorize(Users = AuthorizedUsers.Users)]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)
@@ -110,6 +117,7 @@ namespace SongHaven.Controllers
         // POST: Songs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Users = AuthorizedUsers.Users)]
         public ActionResult DeleteConfirmed(Guid id)
         {
             Song song = db.Songs.Find(id);

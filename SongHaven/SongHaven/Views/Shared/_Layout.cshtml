@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -23,6 +24,10 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("New Song", "Index", "Song")</li>
+                    @if (AuthorizedUsers.Users.Contains(Context.User.Identity.GetUserName()) && Context.User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Manage Songs", "Index", "Songs")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
