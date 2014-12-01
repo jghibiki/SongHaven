@@ -4,11 +4,24 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Manage Songs</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@using (Html.BeginForm("Index", "Songs", FormMethod.Post))
+{
+    <br/>
+    @Html.Label("Search by:")
+    <select name="searchMode" id="searchMode">
+        <option value="title">Title</option>
+        <option value="album">Album</option>
+        <option value="artist">Artist</option>
+    </select>
+    <br/>
+    @Html.Label("Search:")
+    <input type="text" name="searchString" id="searchString"/>
+
+    <input type="submit" value="Submit"/>
+}
+
 <table class="table">
     <tr>
         <th>
