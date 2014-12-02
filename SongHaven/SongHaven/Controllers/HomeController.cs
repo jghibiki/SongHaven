@@ -26,7 +26,7 @@ namespace SongHaven.Controllers
                 ViewBag.NowPlaying = "No Song Playing";
 
             ViewBag.Requests = (from r in db.Requests
-                                select r);
+                                select r).OrderByDescending(r => r.dt_created_date);
 
             ViewBag.Messages = (from m in db.Messages
                                 select m).Take(10).OrderByDescending(m => m.date_created);
@@ -35,7 +35,7 @@ namespace SongHaven.Controllers
         }
 
         [HttpPost]
-        public ActionResult newContent(FormCollection form, string newContent)
+        public ActionResult newContent(string newContent)
         {
             var currentUserID = User.Identity.GetUserId();
 
@@ -75,7 +75,6 @@ namespace SongHaven.Controllers
                             where u.nvc_mvc_id == currentUserID
                             select u.guid_id).FirstOrDefault();
 
-
             Request newRequest = new Request()
             {
                 guid_id = Guid.NewGuid(),
@@ -91,6 +90,5 @@ namespace SongHaven.Controllers
             
             return RedirectToAction("Index");
         }
-
     }
 }
