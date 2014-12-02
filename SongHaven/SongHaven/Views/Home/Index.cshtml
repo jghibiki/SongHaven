@@ -14,13 +14,13 @@
     <table class="table">
         <tr>
             <th>
-                Date made
+                User
             </th>
             <th>
                 Content
             </th>
             <th>
-                User
+                Date
             </th>
         </tr>
 
@@ -62,13 +62,13 @@
     <table class="table">
         <tr>
             <th>
+                User
+            </th>
+            <th>
                 Song
             </th>
             <th>
-                Date Requested
-            </th>
-            <th>
-                Requested By
+                Date
             </th>
         </tr>
 
@@ -76,13 +76,13 @@
         {
             <tr>
                 <td>
-                    @item.dt_created_date
+                    @item.User.nvc_username                  
                 </td>
                 <td>
                     @item.Song.nvc_title
                 </td>
                 <td>
-                    @item.User.nvc_username
+                    @item.dt_created_date
                 </td>
             </tr>
         }
