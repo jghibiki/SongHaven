@@ -18,10 +18,10 @@ namespace SongHaven.Controllers
         public ActionResult Index()
         {
 
-            string firstOrDefault = (from s in db.Requests
-                select s.Song.nvc_title).FirstOrDefault();
+            var firstOrDefault = (from s in db.Requests
+                select s.Song).FirstOrDefault();
             if (firstOrDefault != null)
-                ViewBag.NowPlaying = firstOrDefault.ToString();
+                ViewBag.NowPlaying = firstOrDefault.nvc_artist.ToString() + " -- " + firstOrDefault.nvc_title.ToString();
             else
                 ViewBag.NowPlaying = "No Song Playing";
 
@@ -29,7 +29,7 @@ namespace SongHaven.Controllers
                                 select r);
 
             ViewBag.Messages = (from m in db.Messages
-                                select m).Take(10);
+                                select m).Take(10).OrderByDescending(m => m.date_created);
 
             return View(db.Songs.ToList());
         }
@@ -45,6 +45,7 @@ namespace SongHaven.Controllers
 
             Message newMessage = new Message
             {
+                guid_id = Guid.NewGuid(),
                 date_created = DateTime.Now,
                 content = newContent,
                 fk_user = userGuid,
@@ -74,29 +75,22 @@ namespace SongHaven.Controllers
                             where u.nvc_mvc_id == currentUserID
                             select u.guid_id).FirstOrDefault();
 
-            if ((from r in db.Requests
-                 where r.fk_song == (Guid)id
-                 select r).FirstOrDefault() != null)
-            {
-                Request newRequest = new Request()
-                {
-                    guid_id = Guid.NewGuid(),
-                    dt_created_date = DateTime.Now,
-                    fk_song = (Guid)id,
-                    fk_user = userGuid
-                };
-                db.Requests.Add(newRequest);
 
-                db.SaveChanges();
-            }
+            Request newRequest = new Request()
+            {
+                guid_id = Guid.NewGuid(),
+                dt_created_date = DateTime.Now,
+                fk_song = (Guid)id,
+                fk_user = userGuid
+            };
+            db.Requests.Add(newRequest);
+
+            //increment number of plays
+            song.int_number_of_plays++;
+            db.SaveChanges();
+            
             return RedirectToAction("Index");
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }

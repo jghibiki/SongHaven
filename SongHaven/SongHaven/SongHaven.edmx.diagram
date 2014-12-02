@@ -7,11 +7,11 @@
       <Diagram DiagramId="0d9138bb066140f093c5f9ba668816a6" Name="Diagram1">
         <EntityTypeShape EntityType="SongHavenModel.Request" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SongHavenModel.Song" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SongHavenModel.User" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SongHavenModel.User" Width="1.5" PointX="0.5" PointY="4.375" IsExpanded="true" />
         <AssociationConnector Association="SongHavenModel.FK__Request__fk_song__31EC6D26" ManuallyRouted="false" />
         <AssociationConnector Association="SongHavenModel.FK_Request__fk_user" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SongHavenModel.Command" Width="1.5" PointX="5.375" PointY="0.75" />
-        <EntityTypeShape EntityType="SongHavenModel.Message" Width="1.5" PointX="3" PointY="6.625" />
+        <EntityTypeShape EntityType="SongHavenModel.Message" Width="1.5" PointX="2.875" PointY="5.125" />
         <AssociationConnector Association="SongHavenModel.FK__Messages__fk_use__49C3F6B7" />
       </Diagram>
     </edmx:Diagrams>

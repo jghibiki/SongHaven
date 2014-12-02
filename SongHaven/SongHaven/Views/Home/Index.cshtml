@@ -28,13 +28,13 @@
         {
             <tr>
                 <td>
-                    @item.date_created
+                    @item.User.nvc_username                 
                 </td>
                 <td>
                     @item.content
                 </td>
                 <td>
-                    @item.User.nvc_username
+                    @item.date_created
                 </td>
             </tr>
         }
@@ -45,11 +45,6 @@
                 <th>
                     New Message:
                 </th>
-                <th>
-                
-                </th>
-            </tr>
-            <tr>
                 <th>
                     <input type="text" id="newContent" name="newContent" />
                 </th>
@@ -94,7 +89,6 @@
 
     </table>
 
-
     <h2>Songs</h2> 
     @using (Html.BeginForm("SearchResults", "Song", FormMethod.Post))
     {
@@ -113,11 +107,4 @@
     }
 
 
-
-    
-@*<div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>Yblah</p>
-            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </div>*@
 

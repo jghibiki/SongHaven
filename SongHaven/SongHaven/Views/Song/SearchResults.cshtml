@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<SongHaven.Song>
 @{
-    ViewBag.Title = "SearchResults";
+    ViewBag.Title = "Search Results";
 }
 
-<h2>SearchResults</h2>
+<h2>Search Results</h2>
 
 @using (Html.BeginForm("SearchResults", "Song", FormMethod.Post))
 {
@@ -57,7 +57,7 @@
                @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
                {
                     <td>
-                    @Html.ActionLink("Request", "Request", new {id = item.guid_id})
+                    @Html.ActionLink("Request","Request", "Home", new {id = item.guid_id},null)
                     </td>
                }
             </tr>
