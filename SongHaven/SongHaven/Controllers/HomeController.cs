@@ -21,7 +21,7 @@ namespace SongHaven.Controllers
             var firstOrDefault = (from s in db.Requests
                 select s.Song).FirstOrDefault();
             if (firstOrDefault != null)
-                ViewBag.NowPlaying = firstOrDefault.nvc_artist.ToString() + " -- " + firstOrDefault.nvc_title.ToString();
+                ViewBag.NowPlaying = firstOrDefault.nvc_title.ToString() + " by " + firstOrDefault.nvc_artist.ToString() + " on " + firstOrDefault.nvc_album.ToString();
             else
                 ViewBag.NowPlaying = "No Song Playing";
 
