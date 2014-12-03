@@ -10,6 +10,7 @@ using SongHaven;
 
 namespace SongHaven.Controllers
 {
+    [Authorize(Users = AuthorizedUsers.Users)]
     public class RequestsController : Controller
     {
         private SongHavenEntities db = new SongHavenEntities();

@@ -31,6 +31,8 @@
                          if (AuthorizedUsers.Users.Contains(Context.User.Identity.GetUserName()))
                          {
                              <li>@Html.ActionLink("Manage Songs", "Index", "Songs")</li>
+                             <li>@Html.ActionLink("Manage Requests", "Index", "Requests")</li>
+                             <li>@Html.ActionLink("Manage Messages", "Index", "Messages")</li>
                          }
                     }
                 </ul>
