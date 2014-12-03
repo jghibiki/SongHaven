@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="SongHavenModel.Command" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="SongHavenModel.Message" Width="1.5" PointX="2.875" PointY="5.125" />
         <AssociationConnector Association="SongHavenModel.FK__Messages__fk_use__49C3F6B7" />
+        <EntityTypeShape EntityType="SongHavenModel.RequestToVoter" Width="1.5" PointX="5.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

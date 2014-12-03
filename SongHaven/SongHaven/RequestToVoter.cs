@@ -12,15 +12,9 @@ namespace SongHaven
     using System;
     using System.Collections.Generic;
     
-    public partial class Request
+    public partial class RequestToVoter
     {
-        public System.Guid guid_id { get; set; }
-        public System.Guid fk_song { get; set; }
-        public System.Guid fk_user { get; set; }
-        public System.DateTime dt_created_date { get; set; }
-        public string i_vote_to_skip { get; set; }
-    
-        public virtual Song Song { get; set; }
-        public virtual User User { get; set; }
+        public System.Guid pk_guid_User { get; set; }
+        public System.Guid pk_guid_Request { get; set; }
     }
 }

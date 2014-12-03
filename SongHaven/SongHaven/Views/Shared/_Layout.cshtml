@@ -23,6 +23,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Songs", "ViewSongs", "Song")</li>
                     @if (Context.User.Identity.IsAuthenticated)
                     {
                         <li>@Html.ActionLink("New Song", "Index", "Song")</li>

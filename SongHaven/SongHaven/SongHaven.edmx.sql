@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 11/29/2014 11:20:09
+-- Date Created: 12/03/2014 15:18:39
 -- Generated from EDMX file: C:\Users\jghibiki\Source\Repos\SongHaven\SongHaven\SongHaven\SongHaven.edmx
 -- --------------------------------------------------
 
@@ -56,7 +56,8 @@ CREATE TABLE [dbo].[Requests] (
     [guid_id] uniqueidentifier  NOT NULL,
     [fk_song] uniqueidentifier  NOT NULL,
     [fk_user] uniqueidentifier  NOT NULL,
-    [dt_created_date] datetime  NOT NULL
+    [dt_created_date] datetime  NOT NULL,
+    [i_vote_to_skip] nvarchar(max)  NOT NULL
 );
 GO
 

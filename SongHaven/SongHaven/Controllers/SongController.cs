@@ -90,6 +90,12 @@ namespace SongHaven.Controllers
 
             return View(songs.ToList());
         }
+
+        public ActionResult ViewSongs()
+        {
+            var songs = from m in db.Songs select m;
+            return View(songs.ToList());
+        }
       
     }
 

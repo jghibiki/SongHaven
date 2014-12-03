@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -162,6 +163,11 @@ namespace SongPlayer
         {
             m_logger.LogDebug("Removing request.");
             m_database.Requests.Remove(currentRequest);
+            var votes = from v in m_database.RequestToVoters select v;
+            foreach (var vote in votes)
+            {
+                m_database.RequestToVoters.Remove(vote);
+            }
             m_database.SaveChanges();
             m_logger.LogDebug("Request removed successully.");
         }
@@ -204,7 +210,7 @@ namespace SongPlayer
         /// <returns></returns>
         private Request GetRequests()
         {
-            return m_database.Requests.SingleOrDefault(x => x.dt_created_date == m_database.Requests.Max(y => y.dt_created_date));
+            return m_database.Requests.SingleOrDefault(x => x.dt_created_date == m_database.Requests.Min(y => y.dt_created_date));
         }
 
         /// <summary>

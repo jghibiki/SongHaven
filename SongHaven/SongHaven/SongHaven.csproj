@@ -202,6 +202,9 @@
     <Compile Include="Request.cs">
       <DependentUpon>SongHaven.tt</DependentUpon>
     </Compile>
+    <Compile Include="RequestToVoter.cs">
+      <DependentUpon>SongHaven.tt</DependentUpon>
+    </Compile>
     <Compile Include="Song.cs">
       <DependentUpon>SongHaven.tt</DependentUpon>
     </Compile>
@@ -372,6 +375,7 @@
     <Content Include="Views\Shared\_MvcFileUpload.cshtml" />
     <Content Include="Views\MvcUploaderTest\Demo.cshtml" />
     <Content Include="Views\Song\SearchResults.cshtml" />
+    <Content Include="Views\Song\ViewSongs.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

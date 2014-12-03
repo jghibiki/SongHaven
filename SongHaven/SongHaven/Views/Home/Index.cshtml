@@ -5,7 +5,16 @@
 
 <div class="jumbotron">
     <h1>Now Playing: </h1>
-        <h2>@ViewBag.NowPlaying.ToString()</h2>
+    <h2>@ViewBag.NowPlaying.ToString()</h2>
+    @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
+    {
+
+
+         using (Html.BeginForm("VoteToSkipSong", "Home", FormMethod.Post))
+         {
+             <input type="submit" value="Vote to Skip"/>
+         }
+    }
 </div>
 
 <h2>Messages</h2>
