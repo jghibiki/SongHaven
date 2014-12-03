@@ -3,7 +3,7 @@ SongHaven
 
 An audio controller for playing music on a host machine and controlling via web clients.
 
-A live demo can be accessed at [songhaven.saves-the-whales.com](songhaven.saves-the-whales.com)
+A live demo can be accessed at [http://songhaven.saves-the-whales.com/SongHaven](http://songhaven.saves-the-whales.com/SongHaven)
 
 Directory Structure:
 ---------------------
