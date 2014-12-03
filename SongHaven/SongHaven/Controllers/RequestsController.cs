@@ -55,6 +55,7 @@ namespace SongHaven.Controllers
             if (ModelState.IsValid)
             {
                 request.guid_id = Guid.NewGuid();
+                request.i_vote_to_skip = 0.ToString();
                 db.Requests.Add(request);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -96,6 +96,76 @@ namespace SongHaven.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Users = AuthorizedUsers.Users)]
+        public ActionResult AdminSkip()
+        {
+            db.Commands.Add(new Command()
+                {
+                    int_command = (int)Resources.RemoteCommand.NEXT_SONG,
+                }
+            );
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Users = AuthorizedUsers.Users)]
+        public ActionResult AdminVUp()
+        {
+            db.Commands.Add(new Command()
+                {
+                    int_command = (int)Resources.RemoteCommand.VOLUME_UP,
+                }
+            );
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Users = AuthorizedUsers.Users)]
+        public ActionResult AdminVDown()
+        {
+            db.Commands.Add(new Command()
+                {
+                    int_command = (int)Resources.RemoteCommand.VOLUME_DOWN,
+                }
+            );
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+        
+        [Authorize(Users = AuthorizedUsers.Users)]
+        public ActionResult PlayPause()
+        {
+            db.Commands.Add(new Command()
+                {
+                    int_command = (int)Resources.RemoteCommand.PLAY_PAUSE,
+                }
+            );
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [Authorize(Users = AuthorizedUsers.Users)]
+        public ActionResult Restart()
+        {
+            db.Commands.Add(new Command()
+                {
+                    int_command = (int)Resources.RemoteCommand.RESTART,
+                }
+            );
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
         public ActionResult VoteToSkipSong()
         {
             var request = db.Requests.SingleOrDefault(x => x.dt_created_date == db.Requests.Min(y => y.dt_created_date));

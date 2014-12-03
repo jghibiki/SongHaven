@@ -93,6 +93,7 @@ namespace SongPlayer
                                 case Resources.RemoteCommand.DO_NOTHING:
                                     break;
                                 case Resources.RemoteCommand.NEXT_SONG:
+                                    m_AudioFileStreamWrapper.Pause();
                                     breakOut = true;
                                     break;
                                 case Resources.RemoteCommand.PLAY_PAUSE:

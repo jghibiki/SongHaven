@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SongHaven.Song>
+﻿@using Microsoft.AspNet.Identity
+@model IEnumerable<SongHaven.Song>
 @{
     ViewBag.Title = "Home Page";
 }
@@ -9,11 +10,66 @@
     @if (ViewContext.HttpContext.User.Identity.IsAuthenticated != false)
     {
 
+        <table >
+            <tr>
+                <td style="padding: 5px;">
+                    @using (Html.BeginForm("VoteToSkipSong", "Home", FormMethod.Post))
+                    {
+                        <input type="submit" value="Vote to Skip" />
+                    }
+                </td>
+                <td style="padding: 5px;">
+                    @if (AuthorizedUsers.Users.Contains(Context.User.Identity.GetUserName()))
+                    {
 
-         using (Html.BeginForm("VoteToSkipSong", "Home", FormMethod.Post))
-         {
-             <input type="submit" value="Vote to Skip"/>
-         }
+                        using (Html.BeginForm("AdminSkip", "Home", FormMethod.Post))
+                        {
+                            <input type="submit" value="Skip Song" />
+                        }
+                    }
+                </td>
+                <td style="padding: 5px;">
+                    @if (AuthorizedUsers.Users.Contains(Context.User.Identity.GetUserName()))
+                    {
+
+                        using (Html.BeginForm("AdminVUp", "Home", FormMethod.Post))
+                        {
+                            <input type="submit" value="Volume Up" />
+                        }
+                    }
+                </td>
+                <td style="padding: 5px;">
+                    @if (AuthorizedUsers.Users.Contains(Context.User.Identity.GetUserName()))
+                    {
+
+                        using (Html.BeginForm("AdminVDown", "Home", FormMethod.Post))
+                        {
+                            <input type="submit" value="Volume Down" />
+                        }
+                    }
+                </td>           
+                <td style="padding: 5px;">
+                    @if (AuthorizedUsers.Users.Contains(Context.User.Identity.GetUserName()))
+                    {
+
+                        using (Html.BeginForm("PlayPause", "Home", FormMethod.Post))
+                        {
+                            <input type="submit" value="Play/Pause" />
+                        }
+                    }
+                </td> 
+                <td style="padding: 5px;">
+                    @if (AuthorizedUsers.Users.Contains(Context.User.Identity.GetUserName()))
+                    {
+
+                        using (Html.BeginForm("Restart", "Home", FormMethod.Post))
+                        {
+                            <input type="submit" value="Restart Song Player" />
+                        }
+                    }
+                </td> 
+            </tr>
+        </table>
     }
 </div>
 

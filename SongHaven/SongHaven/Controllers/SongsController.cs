@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -145,6 +146,13 @@ namespace SongHaven.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             Song song = db.Songs.Find(id);
+
+            System.IO.File.Delete(Path.Combine(@"C:\ProgramData\SongHaven\music", string.Format("{0}.{1}", song.guid_id, song.nvc_file_type)));
+
+            db.Requests.RemoveRange(from r in db.Requests
+                where r.Song.guid_id == song.guid_id
+                select r);
+
             db.Songs.Remove(song);
             db.SaveChanges();
             return RedirectToAction("Index");
